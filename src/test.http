@@ -1,0 +1,14 @@
+POST http://localhost:8080/api/inquiries
+Content-Type: application/json
+
+{
+  "name": "박혜민",
+  "phone": "010-1234-5678",
+  "startupType": "YOUNG",
+  "region": "서울 강동구",
+  "message": "테스트 문의입니다",
+  "privacyConsent": true
+}
+
+### 신청 목록 조회
+GET http://localhost:8080/api/inquiries
