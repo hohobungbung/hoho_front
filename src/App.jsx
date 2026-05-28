@@ -1,40 +1,35 @@
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import './index.css'
-import TopBar from './components/TopBar'
 import Nav from './components/Nav'
-import Hero from './components/Hero'
-import StatStrip from './components/StatStrip'
-import BrandStory from './components/BrandStory'
-import FourZero from './components/FourZero'
-import Revenue from './components/Revenue'
-import StartupTypes from './components/StartupTypes'
-import Menu from './components/Menu'
-import StartupProcess from './components/StartupProcess'
-import StartupCost from './components/StartupCost'
-import InquiryForm from './components/InquiryForm'
 import Footer from './components/Footer'
+import FloatingCTA from './components/FloatingCTA'
+import MainPage from './pages/MainPage'
+import BrandPage from './pages/BrandPage'
+import MenuPage from './pages/MenuPage'
+import LocationPage from './pages/LocationPage'
+import FranchisePage from './pages/FranchisePage'
 
-function App() {
-  const scrollToForm = () => {
-    document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  return (
-    <>
-      <TopBar />
-      <Nav onCtaClick={scrollToForm} />
-      <Hero onCtaClick={scrollToForm} />
-      <StatStrip />
-      <BrandStory />
-      <FourZero />
-      <Revenue />
-      <StartupTypes />
-      <Menu />
-      <StartupProcess />
-      <StartupCost />
-      <InquiryForm />
-      <Footer onCtaClick={scrollToForm} />
-    </>
-  )
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <Nav />
+      <FloatingCTA />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/brand" element={<BrandPage />} />
+        <Route path="/menu" element={<MenuPage />} />
+        <Route path="/location" element={<LocationPage />} />
+        <Route path="/franchise" element={<FranchisePage />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  )
+}
