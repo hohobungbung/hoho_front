@@ -6,7 +6,7 @@ export default function Hero({ onCtaClick }) {
           를 .hero에 추가하세요 */}
       <div className="hero__overlay" />
       <div className="hero__content">
-        <p className="hero__sub">Since 2024 · Gangdong-gu, Seoul</p>
+        <p className="hero__sub">Since 2026 · Gangdong-gu, Seoul</p>
         <h1 className="hero__title">
           겨울을 기다리지 않아도 되는<br />
           <span className="hero__title--accent">붕어빵 창업</span>

@@ -1,0 +1,17 @@
+// ===========================
+// Brand Preview
+// ===========================
+.brand-preview {
+  position: relative; padding: 100px 20px;
+  background-color: #d4899e; // 이미지 없을 때 기본 색
+  // 🖼 이미지 교체: background-image: url('/images/brand-bg.jpg');
+  background-size: cover; background-position: center;
+}
+.brand-preview__overlay { position: absolute; inset: 0; background: rgba(75,21,40,.72); }
+.brand-preview__inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; text-align: center; }
+.brand-preview__tag { font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--soft-pink); letter-spacing: .15em; margin-bottom: 16px; }
+.brand-preview__title { font-family: var(--font-korean); font-size: clamp(30px, 4vw, 48px); font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 8px; }
+.brand-preview__title-sub { font-family: var(--font-display); font-style: italic; font-size: clamp(18px, 2.5vw, 28px); color: var(--soft-pink); margin-bottom: 28px; }
+.brand-preview__text { font-size: 17px; line-height: 2; color: rgba(255,255,255,.8); margin-bottom: 40px; word-break: keep-all; }
+.brand-preview__text strong { color: var(--soft-pink); }
+.brand-preview .more-link { color: var(--soft-pink); border-bottom-color: var(--soft-pink); }

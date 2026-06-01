@@ -1,0 +1,10 @@
+// ===========================
+// 모달 팝업
+// ===========================
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; animation: fadeUp .25s ease; }
+.modal-box { background: var(--white); border-radius: 16px; max-width: 560px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 40px; animation: popIn .3s ease; box-shadow: 0 24px 64px rgba(0,0,0,.15); }
+.modal-title { font-family: var(--font-korean); font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--light-pink); }
+.modal-body { font-size: 13px; color: #666; line-height: 1.9; word-break: keep-all; }
+.modal-body h4 { font-family: var(--font-korean); font-size: 14px; font-weight: 700; color: var(--text); margin: 16px 0 8px; }
+.modal-close { width: 100%; padding: 14px; background: var(--brand-pink); color: var(--white); border-radius: 8px; font-family: var(--font-korean); font-size: 15px; font-weight: 700; margin-top: 24px; transition: background .2s; }
+.modal-close:hover { background: #c04570; }

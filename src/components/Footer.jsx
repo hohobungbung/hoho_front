@@ -2,17 +2,20 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Footer() {
   const navigate = useNavigate()
-  const goInquiry = () => { navigate('/franchise'); setTimeout(() => document.getElementById('inquiry')?.scrollIntoView({ behavior:'smooth' }), 100) }
+  const goInquiry = () => {
+    navigate('/franchise')
+    setTimeout(() => document.getElementById('inquiry')?.scrollIntoView({ behavior:'smooth' }), 100)
+  }
   return (
     <footer className="footer">
       <div className="footer__inner">
         <div className="footer__top">
           <div>
-            {/* 🖼 로고 교체: SVG 받으면 텍스트 로고 대신 img 태그 사용 */}
+            {/* 🖼 로고 SVG 받으면 img 태그로 교체 */}
             <div className="footer__logo">호호붕붕 <span>®</span></div>
             <div className="footer__tagline">사계절 따뜻한 간식</div>
           </div>
-          <button className="nav__cta" onClick={goInquiry} style={{ background:'var(--brand-pink)', color:'#fff', padding:'10px 22px', borderRadius:4, fontFamily:'var(--font-korean)', fontSize:14, fontWeight:700 }}>
+          <button className="footer__cta-btn" onClick={goInquiry}>
             지금 상담 신청
           </button>
         </div>
@@ -24,9 +27,7 @@ export default function Footer() {
           <span>상담문의: 010.5518.3807</span>
         </div>
       </div>
-      <div className="footer__bottom">
-        © 2026 호호붕붕. All rights reserved.
-      </div>
+      <div className="footer__bottom">© 2026 호호붕붕. All rights reserved.</div>
     </footer>
   )
 }

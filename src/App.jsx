@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
-import './index.css'
+import './styles/main.scss'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import FloatingCTA from './components/FloatingCTA'

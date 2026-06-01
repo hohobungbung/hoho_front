@@ -63,6 +63,35 @@ const TYPES = [
   { badge:'기타창업', emoji:'✨', title:'나만의 방식으로 시작하세요', subtitle:'다양한 형태의 창업을 지원합니다.', desc:'축제, 마켓, 푸드트럭 등 다양한 형태로 운영 가능. 어떤 형태로 시작하고 싶으신지 상담으로 안내드립니다.', tags:['유연한 운영','푸드트럭 가능','테이크아웃형','맞춤 상담'] },
 ]
 
+function FranchiseTypeCard({ type: t, index }) {
+  const [ref, visible] = useScrollReveal({ threshold: 0.15 })
+  const fromLeft = index % 2 === 0
+  return (
+    <div
+      ref={ref}
+      className="franchise-type"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible
+          ? 'translateX(0)'
+          : `translateX(${fromLeft ? '-60px' : '60px'})`,
+        transition: 'opacity .7s ease, transform .7s ease',
+      }}
+    >
+      <div className="franchise-type__img">{t.emoji}</div>
+      <div>
+        <span className="franchise-type__badge">{t.badge}</span>
+        <h3 className="franchise-type__title">{t.title}</h3>
+        <p className="franchise-type__subtitle">{t.subtitle}</p>
+        <p className="franchise-type__desc">{t.desc}</p>
+        <div className="franchise-type__tags">
+          {t.tags.map(tag => <span key={tag} className="franchise-type__tag">{tag}</span>)}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const FAQS = [
   { q:'로열티가 정말 없나요?', a:'네, 로열티는 일체 없습니다. 매출에서 본사로 납부하는 금액이 없어요. 내가 번 돈은 온전히 내 것입니다.' },
   { q:'교육비 200만원은 무엇인가요?', a:'2주~한 달간의 교육 기간 동안 사용되는 원부자재 실비입니다. 별도의 수업료가 아닙니다.' },
@@ -318,20 +347,7 @@ export default function FranchisePage() {
             <h2 className="section-title">상황에 따른 <span className="keyword-box">맞춤형 설계</span></h2>
             <div className="divider" />
           </div>
-          {TYPES.map((t, i) => (
-            <div className="franchise-type" key={t.badge}>
-              <div className="franchise-type__img">{t.emoji}</div>
-              <div>
-                <span className="franchise-type__badge">{t.badge}</span>
-                <h3 className="franchise-type__title">{t.title}</h3>
-                <p className="franchise-type__subtitle">{t.subtitle}</p>
-                <p className="franchise-type__desc">{t.desc}</p>
-                <div className="franchise-type__tags">
-                  {t.tags.map(tag => <span key={tag} className="franchise-type__tag">{tag}</span>)}
-                </div>
-              </div>
-            </div>
-          ))}
+          {TYPES.map((t, i) => ( <FranchiseTypeCard key={t.badge} type={t} index={i} /> ))}
         </div>
       </section>
 

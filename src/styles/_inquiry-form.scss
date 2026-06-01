@@ -1,0 +1,57 @@
+// ===========================
+// 상담 신청 폼 (봉투 스타일)
+// ===========================
+.inquiry { background: var(--ivory); padding: 100px 20px; }
+
+// 봉투 전체
+.envelope-outer { max-width: 900px; margin: 0 auto; filter: drop-shadow(0 10px 36px rgba(0,0,0,0.14)); }
+
+// 좌우 본문
+.envelope-body { display: grid; grid-template-columns: 1fr 1.35fr; background: linear-gradient(135deg, #f5e6d0 0%, #ede0c8 100%); }
+
+// 왼쪽 짙은 크라프트
+.envelope-left { background: linear-gradient(160deg, #c9874a 0%, #a96830 100%); padding: 52px 36px 40px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; min-height: 420px; }
+.envelope-left::before { content: ''; position: absolute; bottom: -30px; left: -30px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.06); }
+.envelope-left__tag { font-family: var(--font-display); font-style: italic; font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: .12em; margin-bottom: 14px; }
+.envelope-left__title { font-family: var(--font-korean); font-size: clamp(22px, 2.8vw, 32px); font-weight: 700; color: var(--white); line-height: 1.4; margin-bottom: 16px; text-shadow: 0 1px 6px rgba(0,0,0,0.15); }
+.envelope-left__sub { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 20px; }
+.envelope-left__phone { font-family: var(--font-korean); font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 24px; }
+.envelope-left__bread-placeholder { display: flex; gap: 8px; font-size: 48px; margin-top: auto; }
+
+// 오른쪽 폼
+.envelope-right { background: rgba(255,255,255,0.88); padding: 44px 40px; }
+.envelope-right .form-input,
+.envelope-right .form-select,
+.envelope-right .form-textarea { background: rgba(255,255,255,0.75); border-color: rgba(150,100,50,0.22); }
+.envelope-right .form-input:focus,
+.envelope-right .form-select:focus,
+.envelope-right .form-textarea:focus { border-color: #c9874a; background: rgba(255,255,255,0.95); }
+.envelope-right .form-submit { background: linear-gradient(to right, #c9874a, #a86a30); }
+.envelope-right .form-submit:hover:not(:disabled) { background: linear-gradient(to right, #b87540, #9a5e28); box-shadow: 0 6px 20px rgba(150,100,50,0.35); transform: translateY(-1px); }
+
+// 봉투 바닥 마감
+.envelope-bottom { background: linear-gradient(to bottom, #a86a30, #8a5220); height: 14px; border-radius: 0 0 12px 12px; }
+
+// 폼 공통 스타일
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-label { font-family: var(--font-korean); font-size: 13px; font-weight: 600; color: var(--text); }
+.form-label span { color: var(--brand-pink); margin-left: 2px; }
+.form-input, .form-select, .form-textarea { width: 100%; padding: 11px 14px; border: 1.5px solid #e5e5e5; border-radius: 8px; font-family: var(--font-body); font-size: 14px; color: var(--text); background: var(--white); outline: none; transition: border-color .2s; }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--brand-pink); }
+.form-input.error, .form-select.error { border-color: #e53935; }
+.form-textarea { min-height: 90px; resize: none !important; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-error { font-size: 11px; color: #e53935; }
+.form-privacy { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.form-checkbox { display: flex; align-items: flex-start; gap: 8px; flex: 1; }
+.form-checkbox input { width: 15px; height: 15px; margin-top: 2px; accent-color: var(--brand-pink); flex-shrink: 0; }
+.form-checkbox-label { font-size: 12px; color: #777; line-height: 1.5; }
+.form-detail-btn { font-size: 12px; color: var(--brand-pink); border-bottom: 1px solid var(--brand-pink); padding-bottom: 1px; background: none; cursor: pointer; white-space: nowrap; }
+.form-submit { width: 100%; padding: 16px; background: linear-gradient(to right, var(--brand-pink), #c04570); color: var(--white); border-radius: 8px; font-family: var(--font-korean); font-size: 15px; font-weight: 700; letter-spacing: .05em; margin-top: 12px; transition: transform .15s, box-shadow .15s; }
+.form-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,83,126,.4); }
+.form-submit:disabled { opacity: .6; cursor: not-allowed; }
+.form-success { text-align: center; padding: 60px 20px; }
+
+// 기존 bag-wrapper 등은 숨김
+.inquiry__card, .inquiry__left, .inquiry__right,
+.bag-wrapper, .bag-header, .bag-fold, .bag-form, .bag-bottom { display: none !important; }

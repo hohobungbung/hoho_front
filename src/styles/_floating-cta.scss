@@ -1,0 +1,5 @@
+// FloatingCTA - 우하단 붕어빵 버튼
+.floating-cta { position: fixed; right: 24px; bottom: 40px; z-index: 99; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.floating-cta__fish { width: 72px; cursor: pointer; filter: drop-shadow(0 4px 12px rgba(212,83,126,.4)); transition: filter .2s; }
+.floating-cta__fish:hover { animation: wobble .6s ease; filter: drop-shadow(0 6px 18px rgba(212,83,126,.55)); }
+.floating-cta__label { font-family: var(--font-korean); font-size: 10px; font-weight: 700; color: var(--brand-pink); letter-spacing: .05em; }

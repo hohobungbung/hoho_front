@@ -1,0 +1,55 @@
+// ===========================
+// 애니메이션 키프레임
+// ===========================
+
+@keyframes marqueeRTL {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes wobble {
+  0%,100% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-12deg) scale(1.1); }
+  40% { transform: rotate(10deg) scale(1.05); }
+  60% { transform: rotate(-8deg) scale(1.08); }
+  80% { transform: rotate(6deg) scale(1.03); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInRow {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+// 4無 글자 쿵 낙하
+@keyframes dropBounce {
+  0%   { opacity: 0; transform: translateY(-70px); }
+  40%  { opacity: 1; }
+  58%  { transform: translateY(14px); }
+  72%  { transform: translateY(-7px); }
+  83%  { transform: translateY(5px); }
+  91%  { transform: translateY(-2px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+// 4無 행 왼→오 덜컹
+@keyframes slideLeftBounce {
+  0%   { opacity: 0.6; transform: translateX(-120%); }
+  55%  { transform: translateX(14px); opacity: 1; }
+  70%  { transform: translateX(-8px); }
+  82%  { transform: translateX(5px); }
+  91%  { transform: translateX(-2px); }
+  100% { transform: translateX(0); opacity: 1; }
+}
+// 4無 행 오→왼 덜컹
+@keyframes slideRightBounce {
+  0%   { opacity: 0.6; transform: translateX(120%); }
+  55%  { transform: translateX(-14px); opacity: 1; }
+  70%  { transform: translateX(8px); }
+  82%  { transform: translateX(-5px); }
+  91%  { transform: translateX(2px); }
+  100% { transform: translateX(0); opacity: 1; }
+}

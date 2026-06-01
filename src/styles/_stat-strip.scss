@@ -1,0 +1,14 @@
+// ===========================
+// StatStrip 마퀴 띠
+// ===========================
+.stat-strip { background: var(--brand-pink); padding: 18px 0; overflow: hidden; }
+.stat-strip__track-wrap { display: flex; overflow: hidden; }
+.stat-strip__track {
+  display: flex; gap: 0; white-space: nowrap;
+  animation: marqueeRTL 28s linear infinite; // ← 28s = 속도 (작을수록 빠름)
+  width: max-content;
+}
+.stat-strip__item { display: inline-flex; align-items: center; gap: 10px; padding: 0 40px; font-family: var(--font-korean); color: var(--white); }
+.stat-strip__num { font-family: var(--font-display); font-size: 22px; font-weight: 700; }
+.stat-strip__label { font-size: 12px; opacity: .85; }
+.stat-strip__sep { opacity: .35; font-size: 20px; margin: 0 -20px; }
