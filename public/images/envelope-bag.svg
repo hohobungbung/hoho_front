@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="bagLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9874a"/>
+      <stop offset="100%" stop-color="#a86a30"/>
+    </linearGradient>
+    <linearGradient id="bagRight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5e6d0"/>
+      <stop offset="100%" stop-color="#ede0c8"/>
+    </linearGradient>
+    <linearGradient id="bagBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a86a30"/>
+      <stop offset="100%" stop-color="#8a5220"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 봉투 왼쪽 패널 -->
+  <rect x="0" y="32" width="390" height="510" fill="url(#bagLeft)"/>
+  <!-- 봉투 오른쪽 패널 -->
+  <rect x="390" y="32" width="510" height="510" fill="url(#bagRight)"/>
+  <!-- 하단 마감 -->
+  <rect x="0" y="542" width="900" height="18" rx="0" fill="url(#bagBottom)"/>
+  <rect x="0" y="550" width="900" height="10" rx="0 0 12 12" fill="#8a5220"/>
+
+  <!-- 지그재그 상단 (30 peaks) -->
+  <path d="M 0 32 L 0 0 L 30 32 L 60 0 L 90 32 L 120 0 L 150 32 L 180 0 L 210 32 L 240 0 L 270 32 L 300 0 L 330 32 L 360 0 L 390 32 L 420 0 L 450 32 L 480 0 L 510 32 L 540 0 L 570 32 L 600 0 L 630 32 L 660 0 L 690 32 L 720 0 L 750 32 L 780 0 L 810 32 L 840 0 L 870 32 L 900 0 L 900 32 Z" fill="url(#bagLeft)"/>
+</svg>

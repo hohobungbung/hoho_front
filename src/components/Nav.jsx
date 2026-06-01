@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 
 const navItems = [
   {
@@ -22,6 +22,14 @@ const navItems = [
 
 export default function Nav() {
   const navigate = useNavigate()
+  const { pathname } = useLocation()
+
+  const handleLogoClick = (e) => {
+    if (pathname === '/') {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
 
   const handleSubClick = (to) => {
     const [path, hash] = to.split('#')
@@ -40,9 +48,8 @@ export default function Nav() {
     <nav className="nav">
       <div className="nav__inner">
         {/* 🖼 로고 교체 포인트: SVG 받으면 아래 img 태그의 display를 block으로, 텍스트 로고는 숨기기 */}
-        <NavLink to="/" className="nav__logo">
-          <img src="/images/logo.svg" alt="호호붕붕" style={{ display: 'none' }} />
-          <span>호호붕붕 <span>®</span></span>
+        <NavLink to="/" className="nav__logo" onClick={handleLogoClick}>
+          <img src="/main_logo.svg" alt="호호붕붕" />
         </NavLink>
 
         <div className="nav__menu">

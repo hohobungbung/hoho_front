@@ -3,7 +3,7 @@
 // ===========================
 .fz-section {
   position: relative; padding: 100px 20px;
-  background-color: #1e0a12;
+  background-color: #120e1a;
   background-size: cover; background-position: center;
   overflow: clip; // hidden → clip: 가로 넘침 방지하면서 IntersectionObserver 정상 동작
 }
@@ -15,7 +15,7 @@
   font-family: var(--font-korean);
   font-size: clamp(72px, 12vw, 140px); // ← 글자 크기 조정
   font-weight: 700; line-height: 1;
-  background: linear-gradient(135deg, #BA7517 0%, #E8A820 40%, #f5cc5a 60%, #BA7517 100%);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 40%, #f5e87a 60%, var(--gold) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   opacity: 0; transform: translateY(-70px);
 }

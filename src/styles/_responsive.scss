@@ -17,9 +17,9 @@
   .fz-row { grid-template-columns: 80px 1fr; gap: 24px; }
   .fz-row--reverse { grid-template-columns: 1fr 80px; }
   .fz-row__icon-circle { width: 72px; height: 72px; font-size: 28px; }
-  .stype-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 260px); }
-  .stype-card:hover { transform: scale(1.25); }
-  .stype-section { padding-bottom: 160px; }
+  .stype-card-full { grid-template-columns: 1fr; grid-template-rows: 200px 1fr; }
+  .stype-book { height: min(calc(100vh - var(--nav-h) - 40px), 560px); }
+  .stype-card-full__content { padding: 28px 28px; gap: 12px; }
 }
 
 // 팬 캐러셀 (768px)

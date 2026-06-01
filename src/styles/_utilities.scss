@@ -42,7 +42,7 @@
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .text-grad-gold {
-  background: linear-gradient(135deg, #BA7517 0%, #E8A820 50%, #BA7517 100%);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
@@ -52,7 +52,7 @@
   background: linear-gradient(to right, var(--brand-pink), #c04570);
   color: var(--white); padding: 3px 16px 5px; border-radius: 4px; font-weight: 700;
 }
-.keyword-box--gold { background: linear-gradient(135deg, #BA7517, #E8A820); }
+.keyword-box--gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); }
 
 // 스크롤 리빌 (아래→위 등장)
 .reveal {

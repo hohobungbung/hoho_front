@@ -1,36 +1,115 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 const API_URL = 'http://localhost:8080/api/inquiries'
 const initial = { name:'', phone:'', startupType:'', region:'', message:'', privacyConsent:false }
 
-/* 지그재그 입구 */
-function BagZigzag({ fillColor }) {
-  const W=1000, H=32, peaks=30
-  const pw = W/peaks
-  let d = `M 0 ${H}`
-  for (let i=0; i<=peaks; i++) d += ` L ${i*pw} ${i%2===0?0:H}`
-  d += ` L ${W} ${H} Z`
-  return (
-    <svg width="100%" height={H} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none"
-      style={{ display:'block', marginBottom:-1 }}>
-      <path d={d} fill={fillColor} />
-    </svg>
-  )
-}
 
-function PrivacyModal({ onClose }) {
+function PrivacyModal({ onClose, onAgree }) {
+  const bodyRef = useRef(null)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const el = bodyRef.current
+    if (!el) return
+    const check = () => {
+      if (el.scrollHeight - el.scrollTop - el.clientHeight < 10) setScrolled(true)
+    }
+    check()
+    el.addEventListener('scroll', check)
+    return () => el.removeEventListener('scroll', check)
+  }, [])
+
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal-box" onClick={e=>e.stopPropagation()}>
-        <h3 className="modal-title">개인정보 수집·이용 동의</h3>
-        <div className="modal-body">
-          <h4>수집 목적</h4><p>가맹 상담 신청 처리 및 안내 연락</p>
-          <h4>수집 항목</h4><p>이름, 연락처, 창업 유형, 관심 지역, 문의 내용</p>
-          <h4>보유 및 이용기간</h4><p>상담 완료 후 6개월</p>
-          <h4>제3자 제공</h4><p>수집된 개인정보는 가맹 상담 목적 외 제3자에게 제공되지 않습니다.</p>
-          <h4>동의 거부 권리</h4><p>동의를 거부하실 수 있으나, 거부 시 상담 신청이 제한될 수 있습니다.</p>
+        <div className="modal-header">
+          <h3 className="modal-title">개인정보 수집·이용 동의</h3>
+          <button className="modal-x" onClick={onClose}>✕</button>
         </div>
-        <button className="modal-close" onClick={onClose}>확인했습니다</button>
+        <div className="modal-body" ref={bodyRef}>
+
+          <p className="modal-intro">
+            호호붕붕(이하 "회사")은 「개인정보 보호법」 제15조에 따라 가맹 상담 신청 시
+            아래와 같이 개인정보를 수집·이용합니다. 내용을 충분히 읽으신 후 동의 여부를 결정해 주십시오.
+          </p>
+
+          <h4>1. 개인정보 수집·이용 목적</h4>
+          <p>가맹 상담 신청 접수, 상담 일정 안내 및 연락, 창업 관련 정보 제공</p>
+
+          <h4>2. 수집하는 개인정보 항목</h4>
+          <p><strong>[필수]</strong> 이름, 휴대전화번호</p>
+          <p><strong>[선택]</strong> 창업 유형, 관심 지역, 문의 내용</p>
+          <p className="modal-note">※ 선택 항목은 수집에 동의하지 않으셔도 상담 신청이 가능합니다.</p>
+
+          <h4>3. 개인정보 보유 및 이용 기간</h4>
+          <p>상담 완료일로부터 <strong>6개월</strong></p>
+          <p className="modal-note">※ 단, 관계 법령에 따라 보존이 필요한 경우 해당 법령에서 정한 기간 동안 보관됩니다.</p>
+
+          <h4>4. 개인정보의 파기</h4>
+          <p>
+            보유 기간이 경과하거나 처리 목적이 달성된 개인정보는 지체 없이 파기합니다.
+            전자 파일 형태의 정보는 복구·재생이 불가능한 방법으로 영구 삭제하며,
+            출력물 등은 분쇄 또는 소각하여 파기합니다.
+          </p>
+
+          <h4>5. 개인정보의 제3자 제공</h4>
+          <p>
+            회사는 수집한 개인정보를 원칙적으로 제3자에게 제공하지 않습니다.
+            다만, 다음의 경우는 예외로 합니다.
+          </p>
+          <ul>
+            <li>정보주체의 별도 동의가 있는 경우</li>
+            <li>법률에 특별한 규정이 있거나 법령상 의무 이행을 위해 불가피한 경우</li>
+          </ul>
+
+          <h4>6. 개인정보 처리의 위탁</h4>
+          <p>
+            회사는 현재 개인정보 처리 업무를 외부에 위탁하지 않습니다.
+            향후 위탁이 발생하는 경우 위탁 대상자 및 업무 내용을 사전에 고지합니다.
+          </p>
+
+          <h4>7. 정보주체의 권리·의무 및 행사 방법</h4>
+          <p>정보주체는 회사에 대해 언제든지 다음의 권리를 행사할 수 있습니다.</p>
+          <ul>
+            <li>개인정보 열람 요구</li>
+            <li>오류 등이 있을 경우 정정 요구</li>
+            <li>삭제 요구</li>
+            <li>처리 정지 요구</li>
+          </ul>
+          <p className="modal-note">
+            ※ 위 권리 행사는 서면, 전화, 전자우편 등을 통해 하실 수 있으며 회사는 이에 대해
+            지체 없이 조치합니다.
+          </p>
+
+          <h4>8. 개인정보 보호책임자</h4>
+          <table className="modal-table">
+            <tbody>
+              <tr><td>상호</td><td>호호붕붕</td></tr>
+              <tr><td>대표자</td><td>개인정보 보호책임자</td></tr>
+              <tr><td>주소</td><td>서울특별시 강동구 상일동</td></tr>
+              <tr><td>연락처</td><td>010-5518-3807</td></tr>
+            </tbody>
+          </table>
+          <p className="modal-note">
+            ※ 개인정보 보호 관련 문의, 불만 처리, 피해 구제 등에 관한 사항은 위 연락처로
+            문의해 주시기 바랍니다. 또한 개인정보 침해에 대한 신고 및 상담은
+            개인정보 보호위원회(privacy.go.kr / 국번없이 182) 또는
+            한국인터넷진흥원 개인정보침해신고센터(118.go.kr / 국번없이 118)에
+            문의하실 수 있습니다.
+          </p>
+
+          <h4>9. 동의 거부 권리 및 불이익</h4>
+          <p>
+            위 개인정보 수집·이용에 대한 동의를 거부하실 수 있습니다.
+            다만, <strong>필수 항목(이름, 연락처)</strong>에 동의하지 않으실 경우
+            가맹 상담 신청 서비스 이용이 제한됩니다.
+          </p>
+
+        </div>
+        <div className="modal-footer">
+          {!scrolled && <p className="modal-scroll-hint">↓ 내용을 끝까지 스크롤해 주세요</p>}
+          <button className="modal-close" onClick={() => { onAgree(); onClose(); }} disabled={!scrolled}>확인했습니다</button>
+        </div>
       </div>
     </div>
   )
@@ -77,50 +156,44 @@ export default function InquiryForm() {
   if (success) return (
     <section className="inquiry" id="inquiry">
       <div className="envelope-outer">
-        <BagZigzag fillColor="#c9874a" />
         <div className="envelope-body" style={{ padding:60, textAlign:'center' }}>
           <div style={{ fontSize:52, marginBottom:16 }}>🎉</div>
-          <h3 style={{ fontFamily:'var(--font-korean)', fontSize:22, fontWeight:700, color:'var(--burgundy)', marginBottom:8 }}>상담 신청이 완료되었습니다!</h3>
+          <h3 style={{ fontFamily:'var(--font-korean)', fontSize:22, fontWeight:700, color:'var(--brand-pink)', marginBottom:8 }}>상담 신청이 완료되었습니다!</h3>
           <p style={{ fontSize:14, color:'#8a6a50', lineHeight:1.8 }}>1~2 영업일 내로 담당자가 연락드릴 예정입니다 😊</p>
         </div>
-        <div className="envelope-bottom" />
       </div>
     </section>
   )
 
   return (
     <>
-      {showPrivacy && <PrivacyModal onClose={() => setShowPrivacy(false)} />}
+      {showPrivacy && <PrivacyModal onClose={() => setShowPrivacy(false)} onAgree={() => setForm(p => ({ ...p, privacyConsent: true }))} />}
       <section className="inquiry" id="inquiry">
-        <div style={{ textAlign:'center', marginBottom:40 }}>
+        <div className="inquiry__heading">
           <p className="section-tag">Contact Us</p>
+          <h2 className="inquiry__title">호호붕붕과 함께하세요</h2>
         </div>
 
-        {/* 봉투 전체 */}
+        {/* 봉투 래퍼 — 빵이 위에서 솟아오름 */}
+        <div className="envelope-wrapper">
+          <div className="bread-peeker">
+            <span className="bread-peeker__coin bread-peeker__coin--1">🪙</span>
+            <span className="bread-peeker__coin bread-peeker__coin--2">🪙</span>
+          </div>
         <div className="envelope-outer">
-          {/* 지그재그 입구 — 카드 전체 너비 */}
-          <BagZigzag fillColor="#c9874a" />
-
           {/* 좌우 본문 */}
           <div className="envelope-body">
             {/* 왼쪽: 브랜딩 (짙은 크라프트) */}
             <div className="envelope-left">
               <p className="envelope-left__tag">HOHO BUNGBUNG</p>
-              <h2 className="envelope-left__title">
-                호호붕붕과<br />함께하세요
-              </h2>
+              {/* 🖼 로고 교체: 컬러 변경한 SVG 저장 후 경로 입력 */}
+              <img src="/inquiry_logo.svg" alt="호호붕붕" className="envelope-left__logo" />
               <p className="envelope-left__sub">
                 남겨주신 연락처로<br />
                 1~2 영업일 내 담당자가<br />
                 연락드립니다.
               </p>
               <p className="envelope-left__phone">📞 010.5518.3807</p>
-              {/* 🖼 빵 에셋 교체:
-                  <img src="/images/bread-popup.png" className="envelope-left__bread" alt="" />
-                  받으면 아래 플레이스홀더 교체 */}
-              <div className="envelope-left__bread-placeholder">
-                <span>🐟</span><span>🪙</span>
-              </div>
             </div>
 
             {/* 오른쪽: 폼 (연한 크라프트/흰색) */}
@@ -176,9 +249,8 @@ export default function InquiryForm() {
             </div>
           </div>
 
-          {/* 봉투 바닥 마감 */}
-          <div className="envelope-bottom" />
         </div>
+        </div>{/* envelope-wrapper 닫기 */}
       </section>
     </>
   )

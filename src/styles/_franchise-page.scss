@@ -16,13 +16,13 @@
 .reason-card__desc { font-size: 14px; color: #666; line-height: 1.7; word-break: keep-all; }
 
 // 월별 매출
-.monthly-revenue { padding: 100px 20px; background: #1a0810; }
+.monthly-revenue { padding: 100px 20px; background: #120e1a; }
 .monthly-revenue__inner { max-width: 1000px; margin: 0 auto; }
 .monthly-revenue__header { text-align: center; margin-bottom: 64px; }
 .monthly-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 36px; margin-bottom: 32px; opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
 .monthly-card.visible { opacity: 1; transform: translateY(0); }
 .monthly-card__header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-.monthly-card__month { font-family: var(--font-display); font-size: 52px; font-weight: 700; line-height: 1; background: linear-gradient(135deg, #BA7517, #E8A820); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.monthly-card__month { font-family: var(--font-display); font-size: 52px; font-weight: 700; line-height: 1; background: linear-gradient(135deg, var(--gold), var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .monthly-card__badge { background: rgba(212,83,126,.2); border: 1px solid var(--brand-pink); color: var(--soft-pink); padding: 4px 14px; border-radius: 100px; font-family: var(--font-korean); font-size: 12px; font-weight: 600; }
 .monthly-card__total { font-family: var(--font-korean); font-size: 18px; font-weight: 700; color: var(--gold-light); margin-left: auto; }
 .monthly-weeks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }

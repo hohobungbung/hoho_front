@@ -11,14 +11,14 @@ const HERO_SLIDES = [
   { src:null, title:['은퇴 후에도','든든한 평생 직장'], sub:'누구나 시작할 수 있는 창업', sub2:'호호붕붕이 함께합니다' },
 ]
 const MARQUEE_ITEMS = [
-  { num:'로열티', label:'없음' }, null,
-  { num:'가맹비', label:'없음' }, null,
-  { num:'운영 간섭', label:'없음' }, null,
-  { num:'필수 물류', label:'강제 없음' }, null,
-  { num:'180만원+', label:'시범점 일 매출' }, null,
-  { num:'400~500만', label:'월 순수익(원)' }, null,
-  { num:'3평~', label:'소규모 창업 가능' }, null,
-  { num:'6개월', label:'투자비 회수 목표' }, null,
+  { num:'로열티 제로', label:'내가 번 돈은 온전히 내 것' }, null,
+  { num:'일 매출 180만+', label:'상일동 직영점 실제 수치' }, null,
+  { num:'사계절 붕어빵', label:'노점을 넘어 젊은 감성 브랜드로' }, null,
+  { num:'월 순수익 400~500만', label:'투명하게 공개하는 실수익' }, null,
+  { num:'운영 자유도 100%', label:'영업시간·방식 모두 점주님이 결정' }, null,
+  { num:'3평부터 시작', label:'소자본으로 현실 가능한 창업' }, null,
+  { num:'따뜻한 한 입', label:'호호붕붕이 만드는 작은 행복' }, null,
+  { num:'6개월 회수', label:'빠른 투자금 회수 구조' }, null,
 ]
 
 const FOUR_ZERO = [
@@ -35,7 +35,7 @@ const STARTUP_TYPES = [
     brief:'중형차 한 대 비용으로 내 매장을 오픈하다.',
     detail:'스펙 경쟁, 불안한 미래, 반복되는 취업 준비. 중형차 한 대 비용으로 내 매장을 오픈하다. 호호붕붕은 청년이 현실적으로 시작할 수 있도록 설계된 브랜드입니다.',
     tags:['저비용 창업','1인 운영 가능','감성 인테리어'],
-    origin:'bottom right', imgSrc:null,
+    imgSrc:null,
   },
   {
     badge:'부부창업', emoji:'💑',
@@ -43,7 +43,7 @@ const STARTUP_TYPES = [
     brief:'매대 2개 동시 운영으로 매출 극대화.',
     detail:'두 명이 운영하면 매대 2개 동시 운영 가능. 한 명이 굽는 동안 한 명이 판매하면 회전율이 크게 올라갑니다. 은퇴 후 든든한 평생 직장.',
     tags:['매대 2개 운영','노후 준비','매출 극대화'],
-    origin:'bottom left', imgSrc:null,
+    imgSrc:null,
   },
   {
     badge:'샵앤샵', emoji:'🏪',
@@ -51,7 +51,7 @@ const STARTUP_TYPES = [
     brief:'공간만 있으면 바로 시작 가능.',
     detail:'미용실, 카페, 편의점 등 유동인구가 있는 공간이라면 충분합니다. 설치부터 교육까지 본사가 지원해드립니다.',
     tags:['기존 공간 활용','추가 수익','시즌 매출 UP'],
-    origin:'top right', imgSrc:null,
+    imgSrc:null,
   },
   {
     badge:'기타창업', emoji:'✨',
@@ -59,17 +59,36 @@ const STARTUP_TYPES = [
     brief:'축제, 마켓, 푸드트럭 등 다양하게.',
     detail:'축제, 마켓, 푸드트럭 등 다양한 형태로 운영 가능. 어떤 형태로 시작하고 싶으신지 상담을 통해 맞춤 안내해드립니다.',
     tags:['유연한 운영','푸드트럭 가능','맞춤 상담'],
-    origin:'top left', imgSrc:null,
+    imgSrc:null,
   },
 ]
 
 const DONUT_DATA = [
-  { label:'임대료',      percent:6.67,  color:'#f5c0d0', display:'6.67%'  },
-  { label:'원부자재',    percent:30,    color:'#D4537E', display:'30%'    },
-  { label:'인건비',      percent:20,    color:'#e8829e', display:'20%'    },
-  { label:'공과잡비세금',percent:10,    color:'#f0a8be', display:'10%'    },
-  { label:'순이익',      percent:33.33, color:'#c04570', display:'30~35%' },
+  { label:'임대료',      percent:6.67,  color:'#F59E0B', display:'6.67%'  },
+  { label:'원부자재',    percent:30,    color:'#10B981', display:'30%'    },
+  { label:'인건비',      percent:20,    color:'#60A5FA', display:'20%'    },
+  { label:'공과잡비세금',percent:10,    color:'#A78BFA', display:'10%'    },
+  { label:'순이익',      percent:33.33, color:'#D4537E', display:'30~35%' },
 ]
+
+const RADIAN = Math.PI / 180
+function PieLabel({ cx, cy, midAngle, innerRadius, outerRadius, payload }) {
+  const r = innerRadius + (outerRadius - innerRadius) * 0.5
+  const x = cx + r * Math.cos(-midAngle * RADIAN)
+  const y = cy + r * Math.sin(-midAngle * RADIAN)
+  const small = payload.percent < 12
+  return (
+    <text textAnchor="middle" fill="#fff" fontSize={small ? 11 : 13} fontWeight="700">
+      {small
+        ? <tspan x={x} y={y}>{payload.display}</tspan>
+        : <>
+            <tspan x={x} y={y - 9}>{payload.label}</tspan>
+            <tspan x={x} y={y + 9}>{payload.display}</tspan>
+          </>
+      }
+    </text>
+  )
+}
 
 const MENUS_FAN = [
   { emoji:'🐟', name:'팥 붕어빵',     sub:'Red Bean',     price:'900원',   src:null },
@@ -229,40 +248,58 @@ function FourZero() {
   )
 }
 
-/* ─ 창업유형 2×2: 이미지+텍스트 5:5, 호버 확장 ─ */
+/* ─ 창업유형 스케치북 페이지 플립 ─ */
 function StartupTypesSection() {
-  const [ref, visible] = useScrollReveal({ threshold: 0.05 })
+  const scrollAreaRef = useRef(null)
+  const [progress, setProgress] = useState(0)
+  const n = STARTUP_TYPES.length
+  const [headerRef, headerVisible] = useScrollReveal({ threshold: 0.05 })
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = scrollAreaRef.current
+      if (!el) return
+      const { top, height } = el.getBoundingClientRect()
+      const scrolled = -top
+      const max = height - window.innerHeight
+      if (max <= 0) return
+      setProgress(Math.max(0, Math.min(scrolled / max, 1)) * (n - 1))
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [n])
+
   return (
     <section className="stype-section">
-      <div className={`stype-header reveal${visible?' visible':''}`} ref={ref}>
+      <div className={`stype-header reveal${headerVisible?' visible':''}`} ref={headerRef}>
         <p className="section-tag">Who We Welcome</p>
         <h2 className="section-title">상황에 따른 <span className="keyword-box">맞춤형 설계</span></h2>
       </div>
-      <div className="stype-grid">
-        {STARTUP_TYPES.map(t => (
-          <div key={t.badge} className="stype-card" style={{ transformOrigin: t.origin }}>
-            {/* 왼쪽 이미지 (5) */}
-            <div className="stype-card__img">
-              {t.imgSrc
-                ? <img src={t.imgSrc} alt={t.badge} />
-                : <span className="stype-card__emoji">{t.emoji}</span>
-              }
-              {/* 🖼 에셋 교체: t.imgSrc 에 '/images/startup-xxx.jpg' 넣으면 자동 */}
-            </div>
-            {/* 오른쪽 텍스트 (5) */}
-            <div className="stype-card__content">
-              <span className="stype-card__badge">{t.badge}</span>
-              <h3 className="stype-card__title">{t.title}</h3>
-              <p className="stype-card__brief">{t.brief}</p>
-              <div className="stype-card__detail">
-                <p className="stype-card__detail-text">{t.detail}</p>
-                <div className="stype-card__tags">
-                  {t.tags.map(tag => <span key={tag} className="franchise-type__tag">{tag}</span>)}
+      <div ref={scrollAreaRef} style={{ height: `${n * 100}vh` }}>
+        <div className="stype-book">
+          {STARTUP_TYPES.map((t, i) => {
+            const rot = Math.min(Math.max((progress - i) * 180, 0), 180)
+            return (
+              <div key={t.badge} className="stype-page" style={{ transform: `rotateY(-${rot}deg)`, zIndex: n - i }}>
+                <div className="stype-card-full">
+                  <div className="stype-card-full__img">
+                    {t.imgSrc ? <img src={t.imgSrc} alt={t.badge} /> : <span className="stype-card-full__emoji">{t.emoji}</span>}
+                  </div>
+                  <div className="stype-card-full__content">
+                    <span className="stype-card__badge">{t.badge}</span>
+                    <h3 className="stype-card-full__title">{t.title}</h3>
+                    <p className="stype-card-full__brief">{t.brief}</p>
+                    <p className="stype-card-full__detail">{t.detail}</p>
+                    <div className="stype-card__tags">
+                      {t.tags.map(tag => <span key={tag} className="franchise-type__tag">{tag}</span>)}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
+            )
+          })}
+        </div>
       </div>
     </section>
   )
@@ -291,6 +328,9 @@ function JinisQuality() {
           </div>
           <div className={`jinis__img-area reveal${visible?' visible':''}`} style={{transitionDelay:'.2s'}}>제조공장 이미지</div>
         </div>
+        <div style={{textAlign:'center', marginTop:48}}>
+          <Link to="/brand#factory" className="more-link">제조공장 더보기 →</Link>
+        </div>
       </div>
     </section>
   )
@@ -300,35 +340,27 @@ function JinisQuality() {
 function DonutChart({ visible }) {
   return (
     <div className="donut-wrap">
-      <div className="donut-chart-container">
-        <PieChart width={380} height={380}>
-          <Pie
-            data={DONUT_DATA}
-            cx={190} cy={190}
-            innerRadius={110} outerRadius={168}
-            dataKey="percent"
-            startAngle={90} endAngle={450}
-            animationBegin={visible ? 200 : 999999}
-            animationDuration={1800}
-            animationEasing="ease-out"
-            isAnimationActive={visible}
-          >
-            {DONUT_DATA.map((entry,i) => <Cell key={i} fill={entry.color} stroke="none" />)}
-          </Pie>
-        </PieChart>
+      <div className={`donut-chart-container${visible ? ' visible' : ''}`}>
+        {visible && (
+          <PieChart width={380} height={380}>
+            <Pie
+              data={DONUT_DATA}
+              cx={190} cy={190}
+              innerRadius={75} outerRadius={178}
+              dataKey="percent"
+              startAngle={90} endAngle={450}
+              isAnimationActive={false}
+              label={PieLabel}
+              labelLine={false}
+            >
+              {DONUT_DATA.map((entry,i) => <Cell key={i} fill={entry.color} stroke="none" />)}
+            </Pie>
+          </PieChart>
+        )}
         <div className="donut-center">
           <span className="donut-center__label">순이익</span>
           <strong className="donut-center__value">30~35%</strong>
         </div>
-      </div>
-      <div className="donut-legend">
-        {DONUT_DATA.map(d => (
-          <div key={d.label} className="donut-legend__item">
-            <span className="donut-legend__dot" style={{background:d.color}} />
-            <span className="donut-legend__label">{d.label}</span>
-            <span className="donut-legend__val">{d.display}</span>
-          </div>
-        ))}
       </div>
     </div>
   )

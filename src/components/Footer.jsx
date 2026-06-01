@@ -1,11 +1,4 @@
-import { useNavigate } from 'react-router-dom'
-
 export default function Footer() {
-  const navigate = useNavigate()
-  const goInquiry = () => {
-    navigate('/franchise')
-    setTimeout(() => document.getElementById('inquiry')?.scrollIntoView({ behavior:'smooth' }), 100)
-  }
   return (
     <footer className="footer">
       <div className="footer__inner">
@@ -15,9 +8,6 @@ export default function Footer() {
             <div className="footer__logo">호호붕붕 <span>®</span></div>
             <div className="footer__tagline">사계절 따뜻한 간식</div>
           </div>
-          <button className="footer__cta-btn" onClick={goInquiry}>
-            지금 상담 신청
-          </button>
         </div>
         <div className="footer__info">
           <span>상호: 호호붕붕</span>

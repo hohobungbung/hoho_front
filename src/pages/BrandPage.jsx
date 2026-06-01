@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const TABS = [{ id:'concept', label:'브랜드 컨셉' },{ id:'factory', label:'제조공장' }]
@@ -41,6 +42,20 @@ export default function BrandPage() {
   const conceptRef = useRef(null)
   const factoryRef = useRef(null)
   const refMap = { concept:conceptRef, factory:factoryRef }
+  const { hash } = useLocation()
+
+  useEffect(() => {
+    if (!hash) return
+    const id = hash.slice(1)
+    setTimeout(() => {
+      const el = document.getElementById(id)
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - (64 + 52 + 16)
+        window.scrollTo({ top, behavior: 'smooth' })
+        setActive(id)
+      }
+    }, 100)
+  }, [hash])
 
   const scrollTo = (id) => {
     const el = refMap[id]?.current
