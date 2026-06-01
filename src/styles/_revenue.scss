@@ -1,0 +1,40 @@
+// ===========================
+// Revenue 매출 섹션 (도넛 + 표)
+// ⚠️ npm install recharts 필요
+// ===========================
+.revenue { position: relative; padding: 100px 20px; background: #1e0a12; }
+.revenue__inner { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; text-align: center; }
+.revenue__tag { font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--soft-pink); letter-spacing: .15em; margin-bottom: 16px; }
+.revenue__title { font-family: var(--font-korean); font-size: clamp(26px, 4vw, 44px); font-weight: 700; color: var(--white); margin-bottom: 10px; }
+.revenue__sub { font-size: 15px; color: rgba(255,255,255,.7); margin-bottom: 8px; }
+.revenue__challenge { font-size: 13px; color: rgba(255,255,255,.45); margin-bottom: 56px; line-height: 1.7; }
+// 도넛 + 표 좌우 레이아웃
+.revenue__body { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 60px; align-items: center; }
+
+// 도넛 차트
+.donut-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.donut-chart-container { position: relative; width: 380px; height: 380px; flex-shrink: 0; } // ← 차트 크기
+.donut-chart-container svg { display: block; }
+.donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
+.donut-center__label { display: block; font-family: var(--font-korean); font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+.donut-center__value { display: block; font-family: var(--font-korean); font-size: 26px; font-weight: 700; color: var(--gold-light); }
+.donut-legend { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 320px; }
+.donut-legend__item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.75); }
+.donut-legend__dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.donut-legend__label { flex: 1; }
+.donut-legend__val { font-weight: 700; color: var(--gold-light); }
+
+// 표
+.revenue__table-side { display: flex; flex-direction: column; gap: 14px; }
+.revenue__table-headline { margin-bottom: 4px; }
+.revenue__table { width: 100%; border-collapse: collapse; }
+.revenue__table th { background: var(--brand-pink); color: var(--white); padding: 12px 16px; font-family: var(--font-korean); font-size: 13px; text-align: left; }
+.revenue__table th:last-child, .revenue__table td:last-child, .revenue__table td:nth-child(2) { text-align: right; }
+.revenue__table tr.row-hidden td { opacity: 0; transform: translateY(12px); }
+.revenue__table tr.row-visible td { animation: slideInRow .35s ease forwards; }
+.revenue__table td { padding: 12px 16px; font-size: 14px; color: rgba(255,255,255,.75); border-bottom: 1px solid rgba(255,255,255,.08); }
+.revenue__table .profit-row { color: var(--gold-light); font-weight: 700; font-size: 15px; }
+.revenue__notice { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 8px; text-align: left; }
+.revenue__big-num { text-align: center; color: var(--white); font-family: var(--font-korean); font-size: 18px; margin-top: 8px; }
+.revenue__bottom-copy { text-align: center; font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+.revenue__bottom-copy strong { color: var(--soft-pink); }

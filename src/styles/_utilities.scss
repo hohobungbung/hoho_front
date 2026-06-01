@@ -1,0 +1,89 @@
+// ===========================
+// 공통 유틸리티
+// ===========================
+
+// 레이아웃
+.container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+.section { padding: 100px 20px; }
+.section--light { background: var(--white); }
+.section--pink { background: var(--light-pink); }
+.section--ivory { background: var(--ivory); }
+
+// 섹션 공통 텍스트
+.section-tag {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 14px; color: var(--brand-pink);
+  letter-spacing: .15em; margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--font-korean);
+  font-size: clamp(26px, 4vw, 42px); // 최소26px ~ 화면너비4% ~ 최대42px
+  font-weight: 700; line-height: 1.35; color: var(--text);
+}
+.section-body { font-size: 16px; line-height: 1.9; color: #666; word-break: keep-all; }
+.divider { width: 48px; height: 3px; background: var(--brand-pink); margin: 28px auto; border-radius: 2px; }
+.divider--left { margin: 28px 0; }
+.more-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--brand-pink); font-family: var(--font-korean);
+  font-size: 14px; font-weight: 600;
+  border-bottom: 1px solid var(--brand-pink); padding-bottom: 2px;
+  transition: opacity .2s;
+  &:hover { opacity: .7; }
+}
+
+// 그라데이션 텍스트
+.text-grad {
+  background: linear-gradient(135deg, var(--brand-pink) 0%, var(--gold) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.text-grad-pink {
+  background: linear-gradient(to right, #D4537E, #c04570);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.text-grad-gold {
+  background: linear-gradient(135deg, #BA7517 0%, #E8A820 50%, #BA7517 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+// 키워드 박스
+.keyword-box {
+  display: inline-block;
+  background: linear-gradient(to right, var(--brand-pink), #c04570);
+  color: var(--white); padding: 3px 16px 5px; border-radius: 4px; font-weight: 700;
+}
+.keyword-box--gold { background: linear-gradient(135deg, #BA7517, #E8A820); }
+
+// 스크롤 리빌 (아래→위 등장)
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+  &.visible { opacity: 1; transform: translateY(0); }
+}
+// 스크롤 리빌 (왼→오 등장)
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity .7s ease, transform .7s ease;
+  &.visible { opacity: 1; transform: translateX(0); }
+}
+// ───────────────────────────
+// SEO 숨김 텍스트
+// AI 폰트 이미지 사용 시 검색 로봇을 위한 숨김 텍스트
+// display:none 은 절대 사용 금지 (검색 로봇도 무시함)
+// ───────────────────────────
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+// AI 폰트 이미지 크기
+.title-img {
+  max-width: 100%; height: auto;
+  display: block; margin: 0 auto;
+}
