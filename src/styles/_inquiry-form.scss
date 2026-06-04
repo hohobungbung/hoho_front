@@ -1,73 +1,29 @@
 // ===========================
-// 상담 신청 폼 (봉투 스타일)
+// 상담 신청 폼
 // ===========================
-.inquiry { background: var(--ivory); padding: 100px 20px; }
 
-// 봉투 래퍼 (빵 피커 포함)
-.envelope-wrapper {
-  max-width: 900px; margin: 0 auto;
-  position: relative;
-  padding-top: 42px; // 빵이 솟아오를 1cm 공간
+// 섹션 배경 — 🖼 이미지 교체: url('/images/inquiry-bg.jpg') 로 변경
+.inquiry {
+  padding: 100px 20px;
+  background-image: url('/images/inquiry-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: var(--ivory); // 이미지 없을 때 기본 배경
 }
 
-// 빵: 봉투 위에 절대 위치, 봉투가 z-index 2로 아랫부분 덮음
-.bread-peeker {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  display: flex; justify-content: center; align-items: flex-start;
-  z-index: 1; pointer-events: none;
-}
-.bread-peeker__coin {
-  font-size: min(34vw, 310px); // 두 개 합쳐 ~2/3 너비
-  line-height: 1;
-  transition: transform .45s cubic-bezier(0.23, 1, 0.32, 1);
-}
-.bread-peeker__coin--1 { transform: rotate(-10deg); margin-right: -60px; }
-.bread-peeker__coin--2 { transform: rotate(8deg);  margin-left:  -60px; }
-
-// 호버 시 두 코인이 다른 높이로 솟아오름
-.envelope-wrapper:has(.form-submit:hover) .bread-peeker__coin--1 {
-  transform: rotate(-12deg) translateY(-18px);
-}
-.envelope-wrapper:has(.form-submit:hover) .bread-peeker__coin--2 {
-  transform: rotate(10deg) translateY(-28px);
-}
-
-// 봉투 전체: SVG 배경 + z-index 2로 빵 아랫부분 덮음
-.envelope-outer {
-  position: relative; z-index: 2;
-  background-image: url('/images/envelope-bag.svg');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  border-radius: 0 0 12px 12px;
-  filter: drop-shadow(0 10px 36px rgba(0,0,0,0.14));
-}
-
-// 좌우 본문
-.envelope-body { display: grid; grid-template-columns: 1fr 1.35fr; background: transparent; }
-
-// 왼쪽 패널 — SVG가 배경 제공, 콘텐츠만 오버레이
-.envelope-left { background: transparent; padding: 52px 36px 40px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; min-height: 420px; }
-.inquiry__heading { text-align: center; margin-bottom: 40px; }
+.inquiry__heading { text-align: center; margin-bottom: 48px; }
 .inquiry__title { font-family: var(--font-korean); font-size: clamp(26px, 3.5vw, 40px); font-weight: 700; color: var(--text); line-height: 1.4; margin-top: 10px; }
-.envelope-left__tag { font-family: var(--font-display); font-style: italic; font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: .12em; margin-bottom: 20px; }
-.envelope-left__logo { width: 100%; max-width: 180px; height: auto; object-fit: contain; margin-bottom: 20px; }
-.envelope-left__sub { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 20px; }
-.envelope-left__phone { font-family: var(--font-korean); font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 24px; }
 
-// 오른쪽 폼 — SVG 오른쪽 패널 위에 오버레이
-.envelope-right { background: rgba(255,255,255,0.82); padding: 44px 40px; }
-.envelope-right .form-input,
-.envelope-right .form-select,
-.envelope-right .form-textarea { background: rgba(255,255,255,0.75); border-color: rgba(150,100,50,0.22); }
-.envelope-right .form-input:focus,
-.envelope-right .form-select:focus,
-.envelope-right .form-textarea:focus { border-color: #c9874a; background: rgba(255,255,255,0.95); }
-.envelope-right .form-submit { background: linear-gradient(to right, #c9874a, #a86a30); }
-.envelope-right .form-submit:hover:not(:disabled) { background: linear-gradient(to right, #b87540, #9a5e28); box-shadow: 0 6px 20px rgba(150,100,50,0.35); transform: translateY(-1px); }
+// 폼 카드 — 가운데 정렬
+.inquiry__card {
+  max-width: 640px; margin: 0 auto;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 52px 56px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+}
 
-
-// 폼 공통 스타일
+// 폼 공통
 .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
 .form-label { font-family: var(--font-korean); font-size: 13px; font-weight: 600; color: var(--text); }
 .form-label span { color: var(--brand-pink); margin-left: 2px; }
@@ -85,8 +41,3 @@
 .form-submit { width: 100%; padding: 16px; background: linear-gradient(to right, var(--brand-pink), #c04570); color: var(--white); border-radius: 8px; font-family: var(--font-korean); font-size: 15px; font-weight: 700; letter-spacing: .05em; margin-top: 12px; transition: transform .15s, box-shadow .15s; }
 .form-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,83,126,.4); }
 .form-submit:disabled { opacity: .6; cursor: not-allowed; }
-.form-success { text-align: center; padding: 60px 20px; }
-
-// 기존 bag-wrapper 등은 숨김
-.inquiry__card, .inquiry__left, .inquiry__right,
-.bag-wrapper, .bag-header, .bag-fold, .bag-form, .bag-bottom { display: none !important; }
