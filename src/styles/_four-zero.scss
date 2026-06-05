@@ -36,6 +36,7 @@
 }
 .fz-row--reverse { grid-template-columns: 1fr 140px; direction: rtl; }
 .fz-row--reverse > * { direction: ltr; }
+.fz-row--reverse .fz-row__text { text-align: right; }
 .fz-row--slide-left  { animation: slideLeftBounce  0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
 .fz-row--slide-right { animation: slideRightBounce 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
 
