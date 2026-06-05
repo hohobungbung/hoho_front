@@ -2,51 +2,82 @@
 // 4無 섹션 (지그재그 슬라이드)
 // ===========================
 .fz-section {
-  position: relative; padding: 100px 20px;
+  position: relative;
+  padding: 100px 20px;
   background-color: var(--white);
-  background-size: cover; background-position: center;
-  overflow: clip; // hidden → clip: 가로 넘침 방지하면서 IntersectionObserver 정상 동작
+  background-size: cover;
+  background-position: center;
+  // overflow 없음 — body overflow-x: hidden 이 가로스크롤 처리
 }
+
 .fz-inner { max-width: 900px; margin: 0 auto; }
 .fz-title-wrap { text-align: center; margin-bottom: 72px; }
 
 .fz-char {
   display: inline-block;
   font-family: var(--font-korean);
-  font-size: clamp(72px, 12vw, 140px); // ← 글자 크기 조정
+  font-size: clamp(72px, 12vw, 140px);
   font-weight: 700; line-height: 1;
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 40%, #f5e87a 60%, var(--gold) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  opacity: 0; transform: translateY(-70px);
+  opacity: 0;
+  transform: translateY(-70px);
 }
 .fz-char--drop {
-  animation: dropBounce 0.75s cubic-bezier(0.23, 1, 0.32, 1) forwards; // ← 0.75s = 속도
+  animation: dropBounce 0.75s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
-.fz-sub-title { font-family: var(--font-korean); font-size: clamp(16px, 2.2vw, 22px); color: var(--text); margin-top: 16px; font-weight: 300; }
+.fz-sub-title {
+  font-family: var(--font-korean);
+  font-size: clamp(16px, 2.2vw, 22px);
+  color: var(--text); margin-top: 16px; font-weight: 300;
+}
 .fz-sub-title strong { color: var(--brand-pink); font-weight: 700; }
-.four-zero__edu { display: inline-block; background: rgba(186,117,23,.25); border: 1px solid var(--gold); color: var(--gold-light); padding: 8px 24px; border-radius: 100px; font-family: var(--font-korean); font-size: 13px; margin-top: 12px; }
+.four-zero__edu {
+  display: inline-block;
+  background: rgba(186,117,23,.25); border: 1px solid var(--gold);
+  color: var(--gold-light); padding: 8px 24px; border-radius: 100px;
+  font-family: var(--font-korean); font-size: 13px; margin-top: 12px;
+}
 
 .fz-rows { display: flex; flex-direction: column; gap: 0; }
+
 .fz-row {
-  display: grid; grid-template-columns: 140px 1fr; // ← 아이콘 너비 조정
+  display: grid;
+  grid-template-columns: 140px 1fr;
   gap: 40px; align-items: center;
-  padding: 36px 0; border-bottom: 1px solid rgba(0,0,0,0.07);
+  padding: 36px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
   opacity: 0;
+  // transform 없음 — IntersectionObserver가 자연 위치에서 감지
 }
-.fz-row--reverse { grid-template-columns: 1fr 140px; direction: rtl; }
+
+.fz-row--reverse {
+  grid-template-columns: 140px 1fr;
+  direction: rtl;
+  // transform 없음
+}
 .fz-row--reverse > * { direction: ltr; }
-.fz-row--reverse .fz-row__text { text-align: right; }
-.fz-row--slide-left  { animation: slideLeftBounce  0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
-.fz-row--slide-right { animation: slideRightBounce 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+.fz-row--reverse .fz-row__name,
+.fz-row--reverse .fz-row__desc { text-align: right; }
+
+// both = 애니메이션 시작 즉시 0% 키프레임 적용 (translateX 점프 방지)
+//      + 종료 후 100% 상태 유지
+.fz-row--slide-left  { animation: slideLeftBounce  0.8s cubic-bezier(0.23, 1, 0.32, 1) both; }
+.fz-row--slide-right { animation: slideRightBounce 0.8s cubic-bezier(0.23, 1, 0.32, 1) both; }
 
 .fz-row__icon { display: flex; align-items: center; justify-content: center; }
 .fz-row__icon-circle {
-  width: 100px; height: 100px; // ← 아이콘 크기
-  border-radius: 50%;
+  width: 100px; height: 100px; border-radius: 50%;
   background: linear-gradient(135deg, var(--brand-pink), #c04570);
   display: flex; align-items: center; justify-content: center;
   font-size: 40px; box-shadow: 0 4px 20px rgba(212,83,126,0.35);
 }
-.fz-row__name { font-family: var(--font-korean); font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: var(--brand-pink); margin-bottom: 10px; }
-.fz-row__desc { font-size: 15px; color: #666; line-height: 1.8; word-break: keep-all; }
+.fz-row__name {
+  font-family: var(--font-korean);
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700; color: var(--brand-pink); margin-bottom: 10px;
+}
+.fz-row__desc {
+  font-size: 15px; color: #666; line-height: 1.8; word-break: keep-all;
+}

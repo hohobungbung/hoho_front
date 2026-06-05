@@ -1,5 +1,14 @@
 // Nav
-.nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--soft-pink); height: var(--nav-h); }
+.nav { position: sticky; top: 0; z-index: 100; background: var(--white);
+    
+ /*background:
+    radial-gradient(ellipse at 15% 40%, rgba(255,192,213,0.55) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(255,172,200,0.45) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 85%, rgba(255,210,228,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 30% 70%, rgba(255,182,210,0.35) 0%, transparent 45%),
+    linear-gradient(145deg,#fcc8dc 0%, #f9b8d2 35%, #f5a8c8 65%, #f2a0c2 100%);*/
+
+    border-bottom: 1px solid var(--soft-pink); height: var(--nav-h); }
 .nav__inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
 .nav__logo { font-family: var(--font-korean); font-size: 20px; font-weight: 700; color: var(--brand-pink); letter-spacing: -.02em; display: flex; align-items: center; gap: 8px; }
 .nav__logo span { color: var(--gold); }

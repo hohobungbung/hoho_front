@@ -10,7 +10,6 @@
   max-width: 1100px; margin: 0 auto;
 }
 
-// 스크롤 드라이버 안에 sticky 책
 .stype-book {
   position: sticky;
   top: calc(var(--nav-h) + 24px);
@@ -21,7 +20,7 @@
   padding: 0 20px;
 }
 
-// 각 페이지: 겹쳐 쌓이고 JS가 rotateY 구동
+/* 페이지 자체가 섹션 — 카드 없음, 화면 꽉 채움 */
 .stype-page {
   position: absolute;
   inset: 0;
@@ -29,35 +28,39 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   will-change: transform;
-}
 
-// 페이지 내부 카드..
-.stype-card-full {
-  width: 100%; height: 100%;
   display: grid;
   grid-template-columns: 2fr 3fr;
-  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 16px 56px rgba(0,0,0,0.13);
-  border: 1.5px solid var(--soft-pink);
+  /* 카드 느낌 없애기 — border-radius, box-shadow 없음 */
+  /* 대신 페이지 넘김 느낌의 우측 그림자만 */
+  filter: drop-shadow(8px 0 20px rgba(0,0,0,0.12));
 }
 
-.stype-card-full__img {
+.stype-page__img {
   background: var(--light-pink);
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
+  height: 100%;
 }
-.stype-card-full__img img { width: 100%; height: 100%; object-fit: cover; }
-.stype-card-full__emoji { font-size: 96px; line-height: 1; }
+.stype-page__img img { width: 100%; height: 100%; object-fit: cover; }
+.stype-page__emoji { font-size: 96px; line-height: 1; }
 
-.stype-card-full__content {
+.stype-page__content {
   background: var(--white);
   padding: 52px 60px;
   display: flex; flex-direction: column; justify-content: center; gap: 18px;
   overflow: hidden;
 }
-.stype-card__badge { display: inline-block; background: var(--light-pink); color: var(--brand-pink); padding: 4px 14px; border-radius: 100px; font-family: var(--font-korean); font-size: 12px; font-weight: 700; width: fit-content; }
-.stype-card-full__title { font-family: var(--font-korean); font-size: clamp(22px, 3vw, 36px); font-weight: 700; color: var(--text); line-height: 1.35; }
-.stype-card-full__brief { font-size: 16px; color: var(--brand-pink); font-weight: 600; }
-.stype-card-full__detail { font-size: 15px; color: #666; line-height: 1.9; word-break: keep-all; }
+.stype-card__badge {
+  display: inline-block; background: var(--light-pink); color: var(--brand-pink);
+  padding: 4px 14px; border-radius: 100px;
+  font-family: var(--font-korean); font-size: 12px; font-weight: 700; width: fit-content;
+}
+.stype-page__title {
+  font-family: var(--font-korean); font-size: clamp(22px, 3vw, 36px);
+  font-weight: 700; color: var(--text); line-height: 1.35;
+}
+.stype-page__brief { font-size: 16px; color: var(--brand-pink); font-weight: 600; }
+.stype-page__detail { font-size: 15px; color: #666; line-height: 1.9; word-break: keep-all; }
 .stype-card__tags { display: flex; flex-wrap: wrap; gap: 8px; }
