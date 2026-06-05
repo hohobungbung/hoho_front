@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import InquiryForm from '../components/InquiryForm'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { IMAGES } from '../config/images'
 
 const TABS = [{ id:'guide', label:'창업안내' },{ id:'types', label:'창업유형' },{ id:'inquiry', label:'상담신청' }]
 
@@ -57,10 +58,10 @@ const REASONS = [
 ]
 
 const TYPES = [
-  { badge:'청년 & 1인창업', emoji:'🌟', title:'"취업"만이 답은 아닙니다', subtitle:'스펙 경쟁, 불안한 미래, 반복되는 취업 준비.', desc:'중형차 한 대 비용으로 내 매장을 오픈하다. 호호붕붕은 청년이 현실적으로 시작할 수 있도록 설계된 브랜드입니다.', tags:['저비용 창업','1인 운영 가능','저금리 창업대출','감성 인테리어'] },
-  { badge:'부부창업', emoji:'💑', title:'함께 운영하면 더 효율적입니다', subtitle:'은퇴 후에도 든든한 평생 직장.', desc:'두 명이 운영하면 매대 2개 동시 운영 가능. 한 명이 굽는 동안 한 명이 판매하면 회전율이 크게 올라갑니다.', tags:['매대 2개 운영','역할 분담','노후 준비','매출 극대화'] },
-  { badge:'샵앤샵', emoji:'🏪', title:'기존 매장에 수익 라인 추가', subtitle:'공간만 있으면 됩니다.', desc:'미용실, 카페, 편의점 등 유동인구가 있는 공간이라면 충분합니다. 설치부터 교육까지 지원해드립니다.', tags:['기존 공간 활용','추가 수익','시즌 매출 UP','최소 공간'] },
-  { badge:'기타창업', emoji:'✨', title:'나만의 방식으로 시작하세요', subtitle:'다양한 형태의 창업을 지원합니다.', desc:'축제, 마켓, 푸드트럭 등 다양한 형태로 운영 가능. 어떤 형태로 시작하고 싶으신지 상담으로 안내드립니다.', tags:['유연한 운영','푸드트럭 가능','테이크아웃형','맞춤 상담'] },
+  { badge:'청년 & 1인창업', emoji:'🌟', img: IMAGES.franchiseType1, title:'"취업"만이 답은 아닙니다', subtitle:'스펙 경쟁, 불안한 미래, 반복되는 취업 준비.', desc:'중형차 한 대 비용으로 내 매장을 오픈하다. 호호붕붕은 청년이 현실적으로 시작할 수 있도록 설계된 브랜드입니다.', tags:['저비용 창업','1인 운영 가능','저금리 창업대출','감성 인테리어'] },
+  { badge:'부부창업',      emoji:'💑', img: IMAGES.franchiseType2, title:'함께 운영하면 더 효율적입니다', subtitle:'은퇴 후에도 든든한 평생 직장.', desc:'두 명이 운영하면 매대 2개 동시 운영 가능. 한 명이 굽는 동안 한 명이 판매하면 회전율이 크게 올라갑니다.', tags:['매대 2개 운영','역할 분담','노후 준비','매출 극대화'] },
+  { badge:'샵앤샵',        emoji:'🏪', img: IMAGES.franchiseType3, title:'기존 매장에 수익 라인 추가', subtitle:'공간만 있으면 됩니다.', desc:'미용실, 카페, 편의점 등 유동인구가 있는 공간이라면 충분합니다. 설치부터 교육까지 지원해드립니다.', tags:['기존 공간 활용','추가 수익','시즌 매출 UP','최소 공간'] },
+  { badge:'기타창업',      emoji:'✨', img: IMAGES.franchiseType4, title:'나만의 방식으로 시작하세요', subtitle:'다양한 형태의 창업을 지원합니다.', desc:'축제, 마켓, 푸드트럭 등 다양한 형태로 운영 가능. 어떤 형태로 시작하고 싶으신지 상담으로 안내드립니다.', tags:['유연한 운영','푸드트럭 가능','테이크아웃형','맞춤 상담'] },
 ]
 
 function FranchiseTypeCard({ type: t, index }) {
@@ -78,7 +79,12 @@ function FranchiseTypeCard({ type: t, index }) {
         transition: 'opacity .7s ease, transform .7s ease',
       }}
     >
-      <div className="franchise-type__img">{t.emoji}</div>
+      <div className="franchise-type__img">
+        {t.img
+          ? <img src={t.img} alt={t.badge} style={{ width:'100%', height:'100%', objectFit:'cover', borderRadius:'inherit' }} />
+          : t.emoji
+        }
+      </div>
       <div>
         <span className="franchise-type__badge">{t.badge}</span>
         <h3 className="franchise-type__title">{t.title}</h3>
@@ -126,27 +132,94 @@ function MonthlyCard({ data, index }) {
   )
 }
 
-/* ─ 표 행 하나씩 올라오는 애니메이션 ─ */
-function RevenueTable() {
-  const tableRef = useRef(null)
-  const [rowsOn, setRowsOn] = useState(Array(TABLE_ROWS.length).fill(false))
+
+// 슬라이드 목록: 월별카드 3장 + 수익구조표 1장
+const REVENUE_SLIDES = [
+  ...MONTHLY_DATA.map((d, i) => ({ type: 'month', data: d, index: i })),
+  { type: 'table' },
+]
+
+function StickyRevenueSection() {
+  const scrollRef = useRef(null)
+  const [active, setActive] = useState(0)
+  const n = REVENUE_SLIDES.length
+
   useEffect(() => {
-    if (!tableRef.current) return
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        TABLE_ROWS.forEach((_, i) => setTimeout(() => setRowsOn(v => { const n=[...v]; n[i]=true; return n }), i*160))
-        obs.disconnect()
-      }
-    }, { threshold:0.3 })
-    obs.observe(tableRef.current)
-    return () => obs.disconnect()
-  }, [])
+    const onScroll = () => {
+      const el = scrollRef.current
+      if (!el) return
+      const { top, height } = el.getBoundingClientRect()
+      const scrolled = -top
+      const max = height - window.innerHeight
+      if (max <= 0) return
+      const progress = Math.max(0, Math.min(scrolled / max, 1))
+      setActive(Math.min(n - 1, Math.floor(progress * n)))
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [n])
+
+  const bgStyle = IMAGES.revenueBg
+    ? { backgroundImage:`url(${IMAGES.revenueBg})`, backgroundSize:'cover', backgroundPosition:'center' }
+    : {}
+
   return (
-    <table className="revenue__table" ref={tableRef}>
+    <div ref={scrollRef} style={{ height:`${n * 100}vh` }}>
+      <section className="monthly-revenue monthly-revenue--sticky" style={bgStyle}>
+        <div className="monthly-revenue__panel" style={{ background:`rgba(0,0,0,${IMAGES.revenuePanelOpacity ?? 0.7})` }} />
+
+        <div className="monthly-revenue__inner">
+          <div className="monthly-revenue__header">
+            <p style={{ fontFamily:'var(--font-display)', fontStyle:'italic', fontSize:14, color:'var(--soft-pink)', letterSpacing:'.15em', marginBottom:12 }}>The Real Numbers</p>
+            <h2 style={{ fontFamily:'var(--font-korean)', fontSize:'clamp(22px,3vw,36px)', fontWeight:700, color:'var(--white)', marginBottom:24 }}>
+              4평에서 만들어내는 <span className="text-grad-gold">성공신화</span>
+            </h2>
+          </div>
+
+          {/* 트랙 — active 인덱스만큼 왼쪽으로 이동 */}
+          <div className="monthly-revenue__stage">
+            <div
+              className="monthly-revenue__track"
+              style={{ transform: `translateX(calc(-${active} * 100%))` }}
+            >
+              {REVENUE_SLIDES.map((slide, i) => (
+                <div key={i} className="monthly-revenue__slide">
+                  {slide.type === 'month'
+                    ? <MonthlyCard data={slide.data} index={0} />
+                    : <div className="monthly-revenue__table-slide">
+                        <p style={{ fontFamily:'var(--font-korean)', fontSize:16, fontWeight:700, color:'var(--white)', textAlign:'center', marginBottom:20 }}>수익 구조 분석 (3평 기준)</p>
+                        <RevenueTable activeRow={99} />
+                        <p style={{ fontSize:12, color:'rgba(255,255,255,.3)', marginTop:12, textAlign:'center' }}>* 상일동 직영점 기준. 입지·운영 방식에 따라 달라질 수 있습니다.</p>
+                      </div>
+                  }
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="monthly-revenue__dots">
+            {REVENUE_SLIDES.map((_, i) => (
+              <span key={i} className={`stype-dot${i === active ? ' stype-dot--active' : ''}`} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+function RevenueTable({ activeRow }) {
+  return (
+    <table className="revenue__table">
       <thead><tr><th>구분</th><th>금액</th><th>비율</th></tr></thead>
       <tbody>
         {TABLE_ROWS.map((r, i) => (
-          <tr key={r.label} className={rowsOn[i]?'row-visible':'row-hidden'} style={{ animationDelay:`${i*0.1}s` }}>
+          <tr key={r.label} style={{
+            transform: activeRow > i ? 'translateX(0)' : 'translateX(120%)',
+            opacity: activeRow > i ? 1 : 0,
+            transition: `transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94) ${i*0.05}s, opacity 0.4s ease ${i*0.05}s`,
+          }}>
             <td className={r.profit?'profit-row':''}>{r.label}</td>
             <td className={r.profit?'profit-row':''}>{r.amount}</td>
             <td className={r.profit?'profit-row':''}>{r.ratio}</td>
@@ -258,25 +331,8 @@ export default function FranchisePage() {
           </div>
         </section>
 
-        {/* 월별 매출 스크롤 리빌 */}
-        <section className="monthly-revenue">
-          <div className="monthly-revenue__inner">
-            <div className="monthly-revenue__header">
-              <p style={{ fontFamily:'var(--font-display)', fontStyle:'italic', fontSize:14, color:'var(--soft-pink)', letterSpacing:'.15em', marginBottom:16 }}>The Real Numbers</p>
-              <h2 style={{ fontFamily:'var(--font-korean)', fontSize:'clamp(26px,4vw,44px)', fontWeight:700, color:'var(--white)', marginBottom:8 }}>
-                4평에서 만들어내는 <span className="text-grad-gold">성공신화</span>
-              </h2>
-              <p style={{ fontSize:14, color:'rgba(255,255,255,.55)', marginBottom:8 }}>투명하고 정직하게 보여드리겠습니다</p>
-              <p style={{ fontSize:13, color:'rgba(255,255,255,.35)' }}>상일동 직영점 3~5월 실제 매출 데이터</p>
-            </div>
-            {MONTHLY_DATA.map((d, i) => <MonthlyCard key={d.month} data={d} index={i} />)}
-            <div style={{ marginTop:48 }}>
-              <p style={{ fontFamily:'var(--font-korean)', fontSize:16, fontWeight:700, color:'var(--white)', textAlign:'center', marginBottom:24 }}>수익 구조 분석 (3평 기준)</p>
-              <RevenueTable />
-              <p style={{ fontSize:12, color:'rgba(255,255,255,.3)', marginTop:12 }}>* 상일동 직영점 기준. 입지·운영 방식에 따라 달라질 수 있습니다.</p>
-            </div>
-          </div>
-        </section>
+        {/* 월별 매출 — sticky 슬라이드 */}
+        <StickyRevenueSection />
 
         {/* 창업 절차 */}
         <section className="process">

@@ -1,16 +1,22 @@
 import { useState, useRef, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { IMAGES } from '../config/images'
 
 const TABS = [{ id:'concept', label:'브랜드 컨셉' },{ id:'factory', label:'제조공장' }]
 
-/* 🖼 에셋 교체: src:null → '/images/factory-1.jpg' 등으로 교체 */
-const FACTORY_IMAGES = [
-  { src:null, alt:'지니스 제조공장 전경', emoji:'🏭' },
-  { src:null, alt:'반죽 생산 현장', emoji:'🍞' },
-  { src:null, alt:'원재료 창고', emoji:'📦' },
-  { src:null, alt:'포장 및 출고', emoji:'🚚' },
+const FACTORY_ALTS = [
+  '지니스 제조공장 전경', '반죽 생산 현장', '원재료 창고',
+  '포장 및 출고', '제조공장 5', '제조공장 6',
+  '제조공장 7', '제조공장 8', '제조공장 9',
 ]
+const FACTORY_EMOJIS = ['🏭','🍞','📦','🚚','🧊','⚙️','🧪','📋','✅']
+
+const FACTORY_IMAGES = IMAGES.factory.map((src, i) => ({
+  src,
+  alt: FACTORY_ALTS[i] ?? `제조공장 ${i + 1}`,
+  emoji: FACTORY_EMOJIS[i] ?? '🏭',
+}))
 
 function ImageSlider({ images }) {
   const [cur, setCur] = useState(0)
@@ -108,8 +114,10 @@ export default function BrandPage() {
 
           <div ref={r1} style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:72, alignItems:'start', marginBottom:64 }}>
             <div className={`jinis__img-area reveal-left${v1?' visible':''}`} style={{ aspectRatio:'4/3' }}>
-              {/* 🖼 에셋 교체: <img src="/images/brand-concept.jpg" alt="호호붕붕 매장" /> */}
-              브랜드 컨셉 이미지
+              {IMAGES.brandConcept
+                ? <img src={IMAGES.brandConcept} alt="호호붕붕 매장" style={{width:'100%',height:'100%',objectFit:'cover'}} />
+                : '브랜드 컨셉 이미지'
+              }
             </div>
             <div className={`reveal${v1?' visible':''}`} style={{ transitionDelay:'.15s' }}>
               <div className="brand-full__body">

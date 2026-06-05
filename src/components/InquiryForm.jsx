@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { TITLE_IMGS } from '../config/images'
 
 const API_URL = 'http://localhost:8080/api/inquiries'
 const initial = { name:'', phone:'', startupType:'', region:'', message:'', privacyConsent:false }
@@ -128,13 +129,40 @@ export default function InquiryForm() {
     </section>
   )
 
+  const PARTICLES = [
+    { e:'🐟', img: TITLE_IMGS.contactParticle1, s:'5%',  t:'12%', a:'floatA', d:'0s',   sz:100 },
+    { e:'🍡', img: TITLE_IMGS.contactParticle2, s:'88%', t:'8%',  a:'floatB', d:'1s',   sz:80  },
+    { e:'✦',  img: TITLE_IMGS.contactParticle3, s:'92%', t:'55%', a:'floatC', d:'0.5s', sz:60  },
+    { e:'🐡', img: TITLE_IMGS.contactParticle4, s:'3%',  t:'62%', a:'floatB', d:'1.5s', sz:90  },
+    { e:'✦',  img: TITLE_IMGS.contactParticle5, s:'45%', t:'5%',  a:'floatA', d:'2s',   sz:50  },
+    { e:'🐟', img: TITLE_IMGS.contactParticle6, s:'80%', t:'80%', a:'floatC', d:'0.8s', sz:75  },
+    { e:'🍡', img: TITLE_IMGS.contactParticle7, s:'15%', t:'82%', a:'floatA', d:'1.8s', sz:65  },
+    { e:'✦',  img: TITLE_IMGS.contactParticle8, s:'60%', t:'88%', a:'floatB', d:'0.3s', sz:45  },
+  ]
+
   return (
     <>
       {showPrivacy && <PrivacyModal onClose={() => setShowPrivacy(false)} onAgree={() => setForm(p => ({ ...p, privacyConsent: true }))} />}
       <section className="inquiry" id="inquiry">
+        <div className="inquiry__particles" aria-hidden="true">
+          {PARTICLES.map((p, i) => (
+            <span key={i} className="inquiry__particle" style={{
+              left: p.s, top: p.t,
+              fontSize: p.img ? undefined : p.sz,
+              width:    p.img ? p.sz : undefined,
+              height:   p.img ? p.sz : undefined,
+              animation: `${p.a} ${4 + i * 0.4}s ease-in-out ${p.d} infinite`,
+            }}>
+              {p.img
+                ? <img src={p.img} alt="" style={{ width:'100%', height:'100%', objectFit:'contain' }} />
+                : p.e
+              }
+            </span>
+          ))}
+        </div>
         <div className="inquiry__heading">
           <p className="section-tag">Contact Us</p>
-          <h2 className="inquiry__title">호호붕붕과 함께하세요</h2>
+          <h2 className="inquiry__title"><span className="text-grad">호호붕붕</span>과 함께하세요</h2>
         </div>
         <div className="inquiry__card">
           <form onSubmit={handleSubmit} noValidate>

@@ -4,40 +4,112 @@
 .fz-section {
   position: relative;
   padding: 100px 20px;
-  background-color: var(--white);
+  background-color: var(--light-pink);
   background-size: cover;
   background-position: center;
-  // overflow 없음 — body overflow-x: hidden 이 가로스크롤 처리
+  overflow: hidden;
 }
 
-.fz-inner { max-width: 900px; margin: 0 auto; }
-.fz-title-wrap { text-align: center; margin-bottom: 72px; }
+.fz-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1200px, calc(100% - 40px));
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+// ── 사선 흐르는 배경 띠 ──
+.fz-bg-strip {
+  position: absolute;
+  inset: -120px -300px;
+  transform: rotate(-10deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fz-bg-strip__row {
+  overflow: hidden;
+  padding: 14px 0;
+  background: rgba(180, 60, 100, 0.13);
+}
+
+.fz-bg-strip__track {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  animation: marqueeLTR 22s linear infinite;
+}
+
+.fz-bg-strip__item {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(180, 60, 100, 0.35);
+  padding: 0 32px;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.fz-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  padding: 0 72px;
+}
+
+.fz-title-wrap {
+  text-align: center;
+  margin-bottom: 72px;
+}
 
 .fz-char {
   display: inline-block;
   font-family: var(--font-korean);
-  font-size: clamp(72px, 12vw, 140px);
+  font-size: clamp(48px, 7vw, 80px);
   font-weight: 700; line-height: 1;
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 40%, #f5e87a 60%, var(--gold) 100%);
+  background: linear-gradient(
+    105deg,
+    #b8860b 0%,
+    #f7c80e 20%,
+    #fff8a0 35%,
+    #e89520 50%,
+    #f7c80e 65%,
+    #fff176 78%,
+    #c8860e 100%
+  );
+  background-size: 200% auto;
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   opacity: 0;
   transform: translateY(-70px);
+  filter: drop-shadow(0 2px 12px rgba(247,200,14,0.6));
 }
 .fz-char--drop {
-  animation: dropBounce 0.75s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: dropBounce 0.75s cubic-bezier(0.23, 1, 0.32, 1) forwards,
+             goldShimmer 2.8s linear 0.75s infinite;
 }
 
-.fz-sub-title {
-  font-family: var(--font-korean);
-  font-size: clamp(16px, 2.2vw, 22px);
-  color: var(--text); margin-top: 16px; font-weight: 300;
-}
-.fz-sub-title strong { color: var(--brand-pink); font-weight: 700; }
 .four-zero__edu {
   display: inline-block;
-  background: rgba(186,117,23,.25); border: 1px solid var(--gold);
-  color: var(--gold-light); padding: 8px 24px; border-radius: 100px;
-  font-family: var(--font-korean); font-size: 13px; margin-top: 12px;
+  background: rgba(212, 83, 126, 0.08);
+  border: 1.5px solid var(--brand-pink);
+  color: var(--brand-pink);
+  padding: 8px 22px;
+  border-radius: 100px;
+  font-family: var(--font-korean);
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 8px;
 }
 
 .fz-rows { display: flex; flex-direction: column; gap: 0; }
@@ -79,5 +151,5 @@
   font-weight: 700; color: var(--brand-pink); margin-bottom: 10px;
 }
 .fz-row__desc {
-  font-size: 15px; color: #666; line-height: 1.8; word-break: keep-all;
+  font-size: 16px; color: #333; line-height: 1.8; word-break: keep-all; font-weight: 500;
 }

@@ -4,7 +4,7 @@ export default function Hero({ onCtaClick }) {
       
       <div
         className="hero__slide active"
-        style={{ backgroundImage: 'url(/images/pink_pattern.svg)' }}
+        style={{ backgroundImage: 'url(/images/in_store.png)' }}
       />
 
       <div className="hero__overlay" />

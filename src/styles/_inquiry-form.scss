@@ -8,10 +8,26 @@
   background-image: url('/images/inquiry-bg.jpg');
   background-size: cover;
   background-position: center;
-  background-color: var(--ivory); // 이미지 없을 때 기본 배경
+  background-color: var(--ivory);
+  position: relative;
 }
 
-.inquiry__heading { text-align: center; margin-bottom: 48px; }
+.inquiry__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inquiry__particle {
+  position: absolute;
+  opacity: 0.13;
+  user-select: none;
+  display: block;
+  line-height: 1;
+}
+
+.inquiry__heading { position: relative; z-index: 1; text-align: center; margin-bottom: 48px; }
 .inquiry__title { font-family: var(--font-korean); font-size: clamp(26px, 3.5vw, 40px); font-weight: 700; color: var(--text); line-height: 1.4; margin-top: 10px; }
 
 // 폼 카드 — 가운데 정렬
@@ -20,6 +36,7 @@
   background: var(--white);
   border-radius: 20px;
   padding: 52px 56px;
+  position: relative; z-index: 1;
   box-shadow: 0 12px 48px rgba(0,0,0,0.12);
 }
 

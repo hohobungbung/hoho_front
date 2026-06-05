@@ -18,8 +18,8 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes slideInRow {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateX(80px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 @keyframes popIn {
   from { opacity: 0; transform: scale(0.92) translateY(16px); }
@@ -35,6 +35,40 @@
   88%  { transform: scale(1.05) rotate(2deg);   }
   100% { opacity: 1;   transform: scale(1)    rotate(0deg);    }
 }
+// 배경 띠: 왼→오
+@keyframes marqueeLTR {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+// 파티클 float
+@keyframes floatA {
+  0%, 100% { transform: translateY(0)   rotate(0deg);  }
+  50%       { transform: translateY(-18px) rotate(12deg); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateY(0)   rotate(0deg);   }
+  50%       { transform: translateY(-24px) rotate(-10deg); }
+}
+@keyframes floatC {
+  0%, 100% { transform: translateY(0)  rotate(0deg); }
+  33%       { transform: translateY(-14px) rotate(8deg); }
+  66%       { transform: translateY(-8px)  rotate(-6deg); }
+}
+
+// 블롭 float
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.08); }
+  66%       { transform: translate(-20px, 15px) scale(0.94); }
+}
+
+// 금빛 shimmer
+@keyframes goldShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
 // 4無 글자 쿵 낙하
 @keyframes dropBounce {
   0%   { opacity: 0; transform: translateY(-70px); }

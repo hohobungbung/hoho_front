@@ -1,9 +1,37 @@
 // ===========================
 // 메뉴 프리뷰 + 팬 캐러셀
 // ===========================
-.menu-preview { background: var(--white); padding: 100px 20px; }
-.menu-preview__header { text-align: center; margin-bottom: 48px; }
-.menu-preview__more { text-align: center; margin-top: 40px; }
+.menu-preview {
+  background: var(--white);
+  padding: 100px 20px;
+  position: relative;
+}
+
+.menu-preview::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(212,83,126,0.14) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.menu-preview::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -60px;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(244,192,209,0.35) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.menu-preview__header { text-align: center; margin-bottom: 48px; position: relative; z-index: 1; }
+.menu-preview__more { text-align: center; margin-top: 40px; position: relative; z-index: 1; }
+.menu-preview .fan-section { position: relative; z-index: 1; }
 
 // 무지개 팬 캐러셀
 .fan-section { position: relative; max-width: 1100px; margin: 0 auto; padding: 0 72px; user-select: none; }

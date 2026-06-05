@@ -9,6 +9,6 @@
   width: max-content;
 }
 .stat-strip__item { display: inline-flex; align-items: center; gap: 12px; padding: 0 20px; font-family: var(--font-korean); color: var(--white); }
-.stat-strip__num { font-family: var(--font-display); font-size: 22px; font-weight: 700; }
-.stat-strip__label { font-size: 15px; opacity: .9; }
+.stat-strip__num { font-family: var(--font-korean); font-size: 22px; font-weight: 700; }
+.stat-strip__label { font-family: var(--font-korean); font-size: 15px; opacity: .9; }
 .stat-strip__sep { opacity: .35; font-size: 20px; margin: 0 -4px; }

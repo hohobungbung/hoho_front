@@ -1,66 +1,219 @@
 // ===========================
-// 창업유형 스케치북 페이지 플립
+// 창업유형 — 오른쪽→왼쪽 슬라이드
 // ===========================
+
 .stype-section {
-  background: var(--ivory);
+  background: var(--light-pink);
+  // 🖼 배경 이미지: 아래 주석을 풀고 이미지 경로를 입력하세요
+   background-image: url('/images/your-image.jpg');
+   background-size: cover;
+   background-position: center;
+  position: relative;
+  // overflow: hidden 금지 — sticky 동작 깨짐
 }
+
+
 .stype-header {
   text-align: center;
-  padding: 100px 20px 64px;
-  max-width: 1100px; margin: 0 auto;
-}
-
-.stype-book {
-  position: sticky;
-  top: calc(var(--nav-h) + 24px);
+  padding: 48px 20px 32px;
   max-width: 1100px;
   margin: 0 auto;
-  height: min(calc(100vh - var(--nav-h) - 56px), 520px);
-  perspective: 2200px;
-  padding: 0 20px;
 }
 
-/* 페이지 자체가 섹션 — 카드 없음, 화면 꽉 채움 */
-.stype-page {
+// ── 스티키 래퍼 (섹션 전체가 sticky, 카드 없음) ──
+.stype-particles {
   position: absolute;
   inset: 0;
-  transform-origin: left center;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: transform;
-
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  overflow: hidden;
-  /* 카드 느낌 없애기 — border-radius, box-shadow 없음 */
-  /* 대신 페이지 넘김 느낌의 우측 그림자만 */
-  filter: drop-shadow(8px 0 20px rgba(0,0,0,0.12));
+  pointer-events: none;
+  z-index: 0;
 }
 
-.stype-page__img {
-  background: var(--light-pink);
-  display: flex; align-items: center; justify-content: center;
+.stype-particle {
+  position: absolute;
+  opacity: 0.12;
+  user-select: none;
+  display: block;
+  line-height: 1;
+}
+
+.stype-sticky {
+  position: sticky;
+  top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+// ── 슬라이드 무대 ──
+.stype-stage {
+  position: relative;
+  width: 100%;
+  flex: 1;
+}
+
+// ── 개별 슬라이드 ──
+.stype-slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0;
+  padding: 0 80px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(calc(-50% + 100%));
+  opacity: 0;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.stype-slide--active {
+  transform: translateX(-50%);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.stype-slide--past {
+  transform: translateX(calc(-50% - 100%));
+  opacity: 0;
+}
+
+.stype-slide--future {
+  transform: translateX(calc(-50% + 100%));
+  opacity: 0;
+}
+
+// ── 텍스트 영역 ──
+.stype-slide__text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stype-card__badge {
+  display: inline-block;
+  background: var(--brand-pink);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-family: var(--font-korean);
+  font-size: 15px;
+  font-weight: 700;
+  width: fit-content;
+  letter-spacing: 0.03em;
+}
+
+.stype-slide__title {
+  font-family: var(--font-korean);
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
+  margin: 0;
+  word-break: keep-all;
+}
+
+.stype-slide__brief {
+  font-size: clamp(18px, 2vw, 24px);
+  color: var(--brand-pink);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.stype-slide__detail {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.9;
+  word-break: keep-all;
+  margin: 0;
+}
+
+.stype-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+// 창업유형 섹션 태그 — franchise-type__tag 덮어쓰기
+.stype-slide .franchise-type__tag {
+  background: #fff;
+  border: 2px solid var(--brand-pink);
+  color: var(--brand-pink);
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+// ── 비주얼 영역 (이모지 or 이미지) ──
+// ── 비주얼 영역 ──
+.stype-slide__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
 }
-.stype-page__img img { width: 100%; height: 100%; object-fit: cover; }
-.stype-page__emoji { font-size: 96px; line-height: 1; }
 
-.stype-page__content {
-  background: var(--white);
-  padding: 52px 60px;
-  display: flex; flex-direction: column; justify-content: center; gap: 18px;
-  overflow: hidden;
+.stype-slide__visual img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 24px;
+  // 좌우 가장자리 → 섹션 배경색으로 자연스럽게 페이드
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0,0,0,0.3) 15%,
+    rgba(0,0,0,0.7) 28%,
+    black 40%,
+    black 60%,
+    rgba(0,0,0,0.7) 72%,
+    rgba(0,0,0,0.3) 85%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0,0,0,0.3) 15%,
+    rgba(0,0,0,0.7) 28%,
+    black 40%,
+    black 60%,
+    rgba(0,0,0,0.7) 72%,
+    rgba(0,0,0,0.3) 85%,
+    transparent 100%
+  );
 }
-.stype-card__badge {
-  display: inline-block; background: var(--light-pink); color: var(--brand-pink);
-  padding: 4px 14px; border-radius: 100px;
-  font-family: var(--font-korean); font-size: 12px; font-weight: 700; width: fit-content;
+
+.stype-slide__emoji {
+  font-size: 140px;
+  line-height: 1;
+  opacity: 0.35;
 }
-.stype-page__title {
-  font-family: var(--font-korean); font-size: clamp(22px, 3vw, 36px);
-  font-weight: 700; color: var(--text); line-height: 1.35;
+
+// ── 하단 점 인디케이터 ──
+.stype-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 0 32px;
 }
-.stype-page__brief { font-size: 16px; color: var(--brand-pink); font-weight: 600; }
-.stype-page__detail { font-size: 15px; color: #666; line-height: 1.9; word-break: keep-all; }
-.stype-card__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.stype-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d0c8bf;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.stype-dot--active {
+  background: var(--brand-pink);
+  transform: scale(1.4);
+}

@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 import { PieChart, Pie, Cell } from 'recharts'
 import InquiryForm from '../components/InquiryForm'
 import { useScrollReveal } from '../hooks/useScrollReveal'
-import { TITLE_IMGS } from '../config/titleAssets'
+import { TITLE_IMGS, IMAGES } from '../config/images'
 
 const HERO_SLIDES = [
-  { src:null, title:['따뜻한 겨울,','행복한 한 입!'], sub:'바삭하고 달콤한 호호붕붕과 함께!', sub2:'전국 가맹점 모집 중' },
-  { src:null, title:['달콤한 행복,','나만을 위한 특별한 한 입'], sub:'매일 만나는 작은 사치', sub2:'호호붕붕과 함께!' },
-  { src:null, title:['은퇴 후에도','든든한 평생 직장'], sub:'누구나 시작할 수 있는 창업', sub2:'호호붕붕이 함께합니다' },
+  { src: IMAGES.hero[0], title:['따뜻한 겨울,','행복한 한 입!'], sub:'바삭하고 달콤한 호호붕붕과 함께!', sub2:'전국 가맹점 모집 중' },
+  { src: IMAGES.hero[1], title:['달콤한 행복,','나만을 위한 특별한 한 입'], sub:'매일 만나는 작은 사치', sub2:'호호붕붕과 함께!' },
+  { src: IMAGES.hero[2], title:['은퇴 후에도','든든한 평생 직장'], sub:'누구나 시작할 수 있는 창업', sub2:'호호붕붕이 함께합니다' },
 ]
 const MARQUEE_ITEMS = [
   { num:'로열티 제로', label:'내가 번 돈은 온전히 내 것' }, null,
@@ -35,7 +35,7 @@ const STARTUP_TYPES = [
     brief:'중형차 한 대 비용으로 내 매장을 오픈하다.',
     detail:'스펙 경쟁, 불안한 미래, 반복되는 취업 준비. 중형차 한 대 비용으로 내 매장을 오픈하다. 호호붕붕은 청년이 현실적으로 시작할 수 있도록 설계된 브랜드입니다.',
     tags:['저비용 창업','1인 운영 가능','감성 인테리어'],
-    imgSrc:null,
+    imgSrc: IMAGES.startupType1,
   },
   {
     badge:'부부창업', emoji:'💑',
@@ -43,7 +43,7 @@ const STARTUP_TYPES = [
     brief:'매대 2개 동시 운영으로 매출 극대화.',
     detail:'두 명이 운영하면 매대 2개 동시 운영 가능. 한 명이 굽는 동안 한 명이 판매하면 회전율이 크게 올라갑니다. 은퇴 후 든든한 평생 직장.',
     tags:['매대 2개 운영','노후 준비','매출 극대화'],
-    imgSrc:null,
+    imgSrc: IMAGES.startupType2,
   },
   {
     badge:'샵앤샵', emoji:'🏪',
@@ -51,7 +51,7 @@ const STARTUP_TYPES = [
     brief:'공간만 있으면 바로 시작 가능.',
     detail:'미용실, 카페, 편의점 등 유동인구가 있는 공간이라면 충분합니다. 설치부터 교육까지 본사가 지원해드립니다.',
     tags:['기존 공간 활용','추가 수익','시즌 매출 UP'],
-    imgSrc:null,
+    imgSrc: IMAGES.startupType3,
   },
   {
     badge:'기타창업', emoji:'✨',
@@ -59,7 +59,7 @@ const STARTUP_TYPES = [
     brief:'축제, 마켓, 푸드트럭 등 다양하게.',
     detail:'축제, 마켓, 푸드트럭 등 다양한 형태로 운영 가능. 어떤 형태로 시작하고 싶으신지 상담을 통해 맞춤 안내해드립니다.',
     tags:['유연한 운영','푸드트럭 가능','맞춤 상담'],
-    imgSrc:null,
+    imgSrc: IMAGES.startupType4,
   },
 ]
 
@@ -215,28 +215,34 @@ function FourZeroRow({ item }) {
   )
 }
 
+
 function FourZero() {
   const [titleRef, titleVisible] = useScrollReveal({ threshold: 0.3 })
   return (
     <section className="fz-section">
+
+      {/* 사선 배경 띠 */}
+      <div className="fz-bg-strip" aria-hidden="true">
+        {Array.from({ length: 6 }, (_, i) => (
+          <div key={i} className="fz-bg-strip__row">
+            <div className="fz-bg-strip__track">
+              {[...Array(2)].map((_, gi) =>
+                Array.from({ length: 12 }, (_, j) => (
+                  <span key={`${gi}-${j}`} className="fz-bg-strip__item">hoho bungbung ✦</span>
+                ))
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
       <div className="fz-inner">
         <div className="fz-title-wrap" ref={titleRef}>
-          {/* 🖼 AI 폰트 이미지: titleAssets.js 의 fourZeroTitle 에 경로 입력 */}
-          {TITLE_IMGS.fourZeroTitle
-            ? <>
-                <img src={TITLE_IMGS.fourZeroTitle} alt="4無 로열티없음 가맹비없음 운영간섭없음 필수물류강제없음" className="title-img" style={{maxWidth:400}} />
-                <h2 className="sr-only">4無 — 로열티 없음, 가맹비 없음, 운영 간섭 없음, 필수 물류 강제 없음</h2>
-              </>
-            : '4無'.split('').map((ch,i) => (
-                <span key={i} className={`fz-char${titleVisible?' fz-char--drop':''}`} style={{animationDelay:`${i*0.2}s`}}>
-                  {ch}
-                </span>
-              ))
-          }
-          <p className={`fz-sub-title reveal${titleVisible?' visible':''}`} style={{transitionDelay:'.45s'}}>
-            초기 부담을 줄이고 <strong>운영 수익에 집중하는 구조</strong>
-          </p>
-          <span className={`four-zero__edu reveal${titleVisible?' visible':''}`} style={{transitionDelay:'.6s'}}>
+          <p className={`section-tag reveal${titleVisible?' visible':''}`}>4無 정책</p>
+          <h2 className={`section-title reveal${titleVisible?' visible':''}`} style={{transitionDelay:'.2s'}}>
+            초기 부담을 줄이고 <span className="keyword-box">운영 수익에 집중하는 구조</span>
+          </h2>
+          <span className={`four-zero__edu reveal${titleVisible?' visible':''}`} style={{transitionDelay:'.35s'}}>
             ✦ 교육비 200만원 = 2주~1개월 교육 원부자재 실비
           </span>
         </div>
@@ -248,10 +254,10 @@ function FourZero() {
   )
 }
 
-/* ─ 창업유형 스케치북 페이지 플립 ─ */
+/* ─ 창업유형 — 오른쪽→왼쪽 슬라이드 ─ */
 function StartupTypesSection() {
   const scrollAreaRef = useRef(null)
-  const [progress, setProgress] = useState(0)
+  const [active, setActive] = useState(0)
   const n = STARTUP_TYPES.length
   const [headerRef, headerVisible] = useScrollReveal({ threshold: 0.05 })
 
@@ -263,42 +269,78 @@ function StartupTypesSection() {
       const scrolled = -top
       const max = height - window.innerHeight
       if (max <= 0) return
-      setProgress(Math.max(0, Math.min(scrolled / max, 1)) * (n - 1))
+      const progress = Math.max(0, Math.min(scrolled / max, 1))
+      setActive(Math.min(n - 1, Math.floor(progress * n)))
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [n])
 
+  const PARTICLES = [
+    { e:'🐟', img: TITLE_IMGS.particle1, s:'8%',  t:'15%', a:'floatA', d:'0s',    sz:140 },
+    { e:'🐡', img: TITLE_IMGS.particle2, s:'78%', t:'10%', a:'floatB', d:'1.2s',  sz:110 },
+    { e:'✦',  img: TITLE_IMGS.particle3, s:'4%',  t:'58%', a:'floatC', d:'0.6s',  sz:90  },
+    { e:'🐟', img: TITLE_IMGS.particle4, s:'86%', t:'52%', a:'floatA', d:'2s',    sz:120 },
+    { e:'✦',  img: TITLE_IMGS.particle5, s:'48%', t:'6%',  a:'floatB', d:'1.8s',  sz:70  },
+    { e:'🐡', img: TITLE_IMGS.particle6, s:'28%', t:'76%', a:'floatC', d:'0.4s',  sz:100 },
+    { e:'🐟', img: TITLE_IMGS.particle7, s:'66%', t:'74%', a:'floatA', d:'2.5s',  sz:90  },
+    { e:'✦',  img: TITLE_IMGS.particle8, s:'16%', t:'40%', a:'floatB', d:'1s',    sz:80  },
+  ]
+
   return (
     <section className="stype-section">
+      <div className="stype-particles" aria-hidden="true">
+        {PARTICLES.map((p, i) => (
+          <span key={i} className="stype-particle" style={{
+            left: p.s, top: p.t,
+            fontSize: p.img ? undefined : p.sz,
+            width:    p.img ? p.sz : undefined,
+            height:   p.img ? p.sz : undefined,
+            animation: `${p.a} ${4 + i * 0.5}s ease-in-out ${p.d} infinite`,
+          }}>
+            {p.img
+              ? <img src={p.img} alt="" style={{ width:'100%', height:'100%', objectFit:'contain' }} />
+              : p.e
+            }
+          </span>
+        ))}
+      </div>
       <div className={`stype-header reveal${headerVisible?' visible':''}`} ref={headerRef}>
         <p className="section-tag">Who We Welcome</p>
         <h2 className="section-title">상황에 따른 <span className="keyword-box">맞춤형 설계</span></h2>
       </div>
       <div ref={scrollAreaRef} style={{ height: `${n * 100}vh` }}>
-        <div className="stype-book">
-          {STARTUP_TYPES.map((t, i) => {
-            const rot = Math.min(Math.max((progress - i) * 180, 0), 180)
-            return (
-              <div key={t.badge} className="stype-page" style={{ transform: `rotateY(-${rot}deg)`, zIndex: n - i }}>
-                <div className="stype-card-full">
-                  <div className="stype-card-full__img">
-                    {t.imgSrc ? <img src={t.imgSrc} alt={t.badge} /> : <span className="stype-card-full__emoji">{t.emoji}</span>}
-                  </div>
-                  <div className="stype-card-full__content">
+        <div className="stype-sticky">
+          <div className="stype-stage">
+            {STARTUP_TYPES.map((t, i) => {
+              const state = i === active ? 'active' : i < active ? 'past' : 'future'
+              return (
+                <div key={t.badge} className={`stype-slide stype-slide--${state}`}>
+                  <div className="stype-slide__text">
                     <span className="stype-card__badge">{t.badge}</span>
-                    <h3 className="stype-card-full__title">{t.title}</h3>
-                    <p className="stype-card-full__brief">{t.brief}</p>
-                    <p className="stype-card-full__detail">{t.detail}</p>
+                    <h3 className="stype-slide__title">{t.title}</h3>
+                    <p className="stype-slide__brief">{t.brief}</p>
+                    <p className="stype-slide__detail">{t.detail}</p>
                     <div className="stype-card__tags">
                       {t.tags.map(tag => <span key={tag} className="franchise-type__tag">{tag}</span>)}
                     </div>
                   </div>
+                  <div className="stype-slide__visual">
+                    {t.imgSrc
+                      ? <img src={t.imgSrc} alt={t.badge} />
+                      : <span className="stype-slide__emoji">{t.emoji}</span>
+                    }
+                  </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
+          <div className="stype-dots">
+            {STARTUP_TYPES.map((_, i) => (
+              <span key={i} className={`stype-dot${i === active ? ' stype-dot--active' : ''}`} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -326,7 +368,12 @@ function JinisQuality() {
               ))}
             </div>
           </div>
-          <div className={`jinis__img-area reveal${visible?' visible':''}`} style={{transitionDelay:'.2s'}}>제조공장 이미지</div>
+          <div className={`jinis__img-area reveal${visible?' visible':''}`} style={{transitionDelay:'.2s'}}>
+            {IMAGES.factory[0]
+              ? <img src={IMAGES.factory[0]} alt="지니스 제조공장" style={{width:'100%', height:'100%', objectFit:'cover'}} />
+              : '제조공장 이미지'
+            }
+          </div>
         </div>
         <div style={{textAlign:'center', marginTop:48}}>
           <Link to="/brand#factory" className="more-link">제조공장 더보기 →</Link>
@@ -391,14 +438,55 @@ function Revenue() {
     return () => obs.disconnect()
   }, [])
 
+  const revenueBgStyle = IMAGES.revenueBg ? {
+    backgroundImage: `url(${IMAGES.revenueBg})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  } : {}
+
+  const panelOpacity = IMAGES.revenuePanelOpacity ?? 0.7
+
+  const TICKER_ITEMS = [
+    '투명하고 정직하게 보여드리겠습니다',
+    '투자비대비 6개월안에 회수가능',
+    '시원하게 대답해 드립니다!',
+    '지금은 수익률까지 따져야 할 때!',
+  ]
+
   return (
-    <section className="revenue" ref={ref}>
+    <section className="revenue" ref={ref} style={revenueBgStyle}>
+      <div className="revenue__panel" style={{ background: `rgba(0,0,0,${panelOpacity})` }} />
+
+      <div className="revenue__ticker revenue__ticker--top" aria-hidden="true">
+        <div className="revenue__ticker__track">
+          {[...Array(2)].map((_, gi) =>
+            TICKER_ITEMS.map((text, i) => (
+              <span key={`${gi}-${i}`} className="revenue__ticker__item">
+                {text} <span className="revenue__ticker__sep">◆</span>
+              </span>
+            ))
+          )}
+        </div>
+      </div>
+
+      <div className="revenue__ticker revenue__ticker--bottom" aria-hidden="true">
+        <div className="revenue__ticker__track revenue__ticker__track--rtl">
+          {[...Array(2)].map((_, gi) =>
+            TICKER_ITEMS.map((text, i) => (
+              <span key={`${gi}-${i}`} className="revenue__ticker__item">
+                {text} <span className="revenue__ticker__sep">◆</span>
+              </span>
+            ))
+          )}
+        </div>
+      </div>
+
       <div className="revenue__inner" style={{textAlign:'center', marginBottom:48}}>
         <p className={`revenue__tag reveal${visible?' visible':''}`}>The Real Numbers</p>
         {TITLE_IMGS.revenueTitle
           ? <>
               <img src={TITLE_IMGS.revenueTitle} alt="4평에서 만들어내는 성공신화" className="title-img" />
-              <h2 className="sr-only">4평에서 만들어내는 성공신화 — 시범점 일 매출 180만원, 순이익률 30~35%</h2>
+              <h2 className="sr-only">4평에서 만들어내는 성공신화</h2>
             </>
           : <h2 className={`revenue__title reveal${visible?' visible':''}`} style={{transitionDelay:'.1s'}}>
               4평에서 만들어내는 <span className="text-grad-gold">성공신화</span>
