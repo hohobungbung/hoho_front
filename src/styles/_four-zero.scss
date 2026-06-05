@@ -3,7 +3,7 @@
 // ===========================
 .fz-section {
   position: relative; padding: 100px 20px;
-  background-color: #120e1a;
+  background-color: var(--white);
   background-size: cover; background-position: center;
   overflow: clip; // hidden → clip: 가로 넘침 방지하면서 IntersectionObserver 정상 동작
 }
@@ -23,15 +23,15 @@
   animation: dropBounce 0.75s cubic-bezier(0.23, 1, 0.32, 1) forwards; // ← 0.75s = 속도
 }
 
-.fz-sub-title { font-family: var(--font-korean); font-size: clamp(16px, 2.2vw, 22px); color: var(--white); margin-top: 16px; font-weight: 300; }
-.fz-sub-title strong { color: var(--soft-pink); font-weight: 700; }
+.fz-sub-title { font-family: var(--font-korean); font-size: clamp(16px, 2.2vw, 22px); color: var(--text); margin-top: 16px; font-weight: 300; }
+.fz-sub-title strong { color: var(--brand-pink); font-weight: 700; }
 .four-zero__edu { display: inline-block; background: rgba(186,117,23,.25); border: 1px solid var(--gold); color: var(--gold-light); padding: 8px 24px; border-radius: 100px; font-family: var(--font-korean); font-size: 13px; margin-top: 12px; }
 
 .fz-rows { display: flex; flex-direction: column; gap: 0; }
 .fz-row {
   display: grid; grid-template-columns: 140px 1fr; // ← 아이콘 너비 조정
   gap: 40px; align-items: center;
-  padding: 36px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 36px 0; border-bottom: 1px solid rgba(0,0,0,0.07);
   opacity: 0;
 }
 .fz-row--reverse { grid-template-columns: 1fr 140px; direction: rtl; }
@@ -47,5 +47,5 @@
   display: flex; align-items: center; justify-content: center;
   font-size: 40px; box-shadow: 0 4px 20px rgba(212,83,126,0.35);
 }
-.fz-row__name { font-family: var(--font-korean); font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: var(--soft-pink); margin-bottom: 10px; }
-.fz-row__desc { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.8; word-break: keep-all; }
+.fz-row__name { font-family: var(--font-korean); font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: var(--brand-pink); margin-bottom: 10px; }
+.fz-row__desc { font-size: 15px; color: #666; line-height: 1.8; word-break: keep-all; }
