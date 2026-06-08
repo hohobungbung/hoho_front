@@ -11,22 +11,6 @@
 // ─────────────────────────────────────────────────────
 export const TITLE_IMGS = {
 
-  // ── 히어로 슬라이드 제목 ──────────────────────────
-  heroTitle1: null,   // '/images/font/hero-title-1.svg'  — "따뜻한 겨울, 행복한 한 입!"
-  heroTitle2: null,   // '/images/font/hero-title-2.svg'  — "달콤한 행복, 나만을 위한 특별한 한 입"
-  heroTitle3: null,   // '/images/font/hero-title-3.svg'  — "은퇴 후에도, 든든한 평생 직장"
-
-  // ── 메인 섹션 제목 ────────────────────────────────
-  brandPreviewTitle: null,  // '/images/font/brand-preview-title.svg' — "사계절 따뜻한 붕어빵,"
-  fourZeroTitle:     null,  // '/images/font/fourzero.svg'             — "4無"
-  revenueTitle:      null,  // '/images/font/revenue-title.svg'        — "4평에서 만들어내는 성공신화"
-  menuPreviewTitle:  null,  // '/images/font/menu-preview-title.svg'   — "호호붕붕 대표 메뉴"
-
-  // ── 브랜드 / 창업안내 페이지 제목 ────────────────
-  brandPageTitle:          null,  // '/images/font/brand-page-title.svg'
-  franchiseReasonsTitle:   null,  // '/images/font/franchise-reasons-title.svg'
-  franchiseRevenueTitle:   null,  // '/images/font/franchise-revenue-title.svg'
-
   // ── Who We Welcome 파티클 이미지 ─────────────────
   // null → 기본 이모지(🐟🐡✦) 표시 / 경로 입력 → 이미지로 교체
   // 이미지 파일은 public/images/ 폴더에 넣으면 됩니다
@@ -57,7 +41,7 @@ export const TITLE_IMGS = {
 export const IMAGES = {
 
   // ── 로고 ─────────────────────────────────────────
-  logo:    '/main_logo.svg',  // public 루트에 위치
+  logo:    '/images/main_logo.svg',  // public 루트에 위치
 
   // ── 플로팅 CTA (붕어빵 아이콘) ───────────────────
   taiyaki: '/images/mini.svg',  // 현재 적용 중
@@ -70,8 +54,6 @@ export const IMAGES = {
   ],
 
   // ── 섹션 배경 ────────────────────────────────────
-  brandBg:   null,  // '/images/brand-bg.jpg'    — 브랜드스토리 배경
-  inquiryBg: null,  // '/images/inquiry-bg.jpg' — 상담폼 배경
   revenueBg: '/images/in_store.png',  // '/images/revenue-bg.jpg' — The Real Numbers 섹션 배경
   revenuePanelOpacity: 0.7,          // 패널 불투명도 (0 = 완전 투명 ~ 1 = 완전 불투명)
 
@@ -94,9 +76,8 @@ export const IMAGES = {
   inStore:      '/images/in_store.png',  // 현재 파일 존재
 
   // ── 상담 폼 일러스트 ─────────────────────────────
-  breadCard: null,  // '/images/bread-card.png'
-  craft:     '/images/craft.svg',   // 현재 파일 존재 (craft.png도 있음)
-  grayLogo:  '/images/gray_logo.svg',  // 현재 파일 존재
+  craft:    '/images/craft.svg',
+  grayLogo: '/images/gray_logo.svg',
 
   // ── 제조공장 슬라이더 (9장) ──────────────────────
   // null → 이모지 플레이스홀더 표시 / 경로 입력 → 이미지 표시
@@ -148,38 +129,55 @@ export const IMAGES = {
 // ─────────────────────────────────────────────────────
 // 월별 매출 데이터
 // ─────────────────────────────────────────────────────
+// 상일동 직영점 실제 월별 매출 요약
 export const MONTHLY_REVENUE = [
   {
     month: '3월', badge: '비수기 오픈', accent: '#D4537E',
     note: '상일동점 오픈 첫 달 (비수기 기준)',
-    weeks: [
-      { label: '1째주 (03.02~08)', days: ['휴무','100만','100만','100만','100만','100만','100만'] },
-      { label: '2째주 (03.09~15)', days: ['휴무','100만','100만','100만','100만','100만','100만'] },
-      { label: '3째주 (03.16~22)', days: ['휴무','100만','100만','100만','100만','100만','100만'] },
-      { label: '4째주 (03.23~29)', days: ['휴무','100만','100만','100만','100만','100만','100만'] },
+    total: '43,340,500원',
+    profit: '17,004,300원',
+    // 손익 구조
+    breakdown: [
+      { label:'매출',      amount:'43,340,500', ratio:'100%'  },
+      { label:'반죽',      amount:'8,668,100',  ratio:'20%'   },
+      { label:'부재료',    amount:'3,467,240',  ratio:'8%'    },
+      { label:'세금·경비', amount:'5,200,860',  ratio:'12%'   },
+      { label:'인건비',    amount:'6,000,000',  ratio:'고정'   },
+      { label:'월세·관리', amount:'3,000,000',  ratio:'고정'   },
+      { label:'지출계',    amount:'26,336,200', ratio:'-'     },
+      { label:'순이익',    amount:'17,004,300', ratio:'-'     },
     ],
-    total: '35,000,000원',
   },
   {
-    month: '4월', badge: '봄 성수기', accent: '#BA7517',
-    note: '4월 데이터 (실제 값으로 교체)',
-    weeks: [
-      { label: '1째주', days: ['-','-','-','-','-','-','-'] },
-      { label: '2째주', days: ['-','-','-','-','-','-','-'] },
-      { label: '3째주', days: ['-','-','-','-','-','-','-'] },
-      { label: '4째주', days: ['-','-','-','-','-','-','-'] },
+    month: '4월', badge: '봄 시즌', accent: '#20bf6b',
+    note: '봄 시즌',
+    total: '42,029,500원',
+    profit: '16,217,700원',
+    breakdown: [
+      { label:'매출',      amount:'42,029,500', ratio:'100%'  },
+      { label:'반죽',      amount:'8,405,900',  ratio:'20%'   },
+      { label:'부재료',    amount:'3,362,360',  ratio:'8%'    },
+      { label:'세금·경비', amount:'5,043,540',  ratio:'12%'   },
+      { label:'인건비',    amount:'6,000,000',  ratio:'고정'   },
+      { label:'월세·관리', amount:'3,000,000',  ratio:'고정'   },
+      { label:'지출계',    amount:'25,811,800', ratio:'-'     },
+      { label:'순이익',    amount:'16,217,700', ratio:'-'     },
     ],
-    total: '입력 예정',
   },
   {
-    month: '5월', badge: '봄 성수기', accent: '#c04570',
-    note: '5월 데이터 (실제 값으로 교체)',
-    weeks: [
-      { label: '1째주', days: ['-','-','-','-','-','-','-'] },
-      { label: '2째주', days: ['-','-','-','-','-','-','-'] },
-      { label: '3째주', days: ['-','-','-','-','-','-','-'] },
-      { label: '4째주', days: ['-','-','-','-','-','-','-'] },
+    month: '5월', badge: '봄 시즌', accent: '#fd9644',
+    note: '봄 시즌',
+    total: '32,158,500원',
+    profit: '10,295,100원',
+    breakdown: [
+      { label:'매출',      amount:'32,158,500', ratio:'100%'  },
+      { label:'반죽',      amount:'6,431,700',  ratio:'20%'   },
+      { label:'부재료',    amount:'2,572,680',  ratio:'8%'    },
+      { label:'세금·경비', amount:'3,859,020',  ratio:'12%'   },
+      { label:'인건비',    amount:'6,000,000',  ratio:'고정'   },
+      { label:'월세·관리', amount:'3,000,000',  ratio:'고정'   },
+      { label:'지출계',    amount:'21,863,400', ratio:'-'     },
+      { label:'순이익',    amount:'10,295,100', ratio:'-'     },
     ],
-    total: '입력 예정',
   },
 ]

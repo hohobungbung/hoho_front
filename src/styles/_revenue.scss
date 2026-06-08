@@ -89,9 +89,9 @@
 .revenue__table th {
   background: rgba(180,40,80,0.85);
   color: #fff; padding: 14px 18px;
-  font-family: var(--font-korean); font-size: 14px; font-weight: 700; text-align: left;
+  font-family: var(--font-korean); font-size: 14px; font-weight: 700;
 }
-.revenue__table th:last-child, .revenue__table td:last-child, .revenue__table td:nth-child(2) { text-align: right; }
+.revenue__table th, .revenue__table td { text-align: center; }
 .revenue__table tr.row-hidden { opacity: 0; transform: translateX(80px); }
 .revenue__table tr.row-visible { animation: slideInRow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
 .revenue__table td {
@@ -110,3 +110,4 @@
 .revenue__big-num { text-align: center; color: #fff; font-family: var(--font-korean); font-size: 20px; margin-top: 8px; font-weight: 700; }
 .revenue__bottom-copy { text-align: center; font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.9; }
 .revenue__bottom-copy strong { color: var(--gold); font-weight: 800; }
+.revenue__mid-copy { text-align: center; font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.9; font-weight: 400; margin-top: 32px; padding: 0 16px; }

@@ -4,12 +4,7 @@
 
 .stype-section {
   background: var(--light-pink);
-  // 🖼 배경 이미지: 아래 주석을 풀고 이미지 경로를 입력하세요
-   background-image: url('/images/your-image.jpg');
-   background-size: cover;
-   background-position: center;
   position: relative;
-  // overflow: hidden 금지 — sticky 동작 깨짐
 }
 
 

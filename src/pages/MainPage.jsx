@@ -64,11 +64,11 @@ const STARTUP_TYPES = [
 ]
 
 const DONUT_DATA = [
-  { label:'임대료',      percent:6.67,  color:'#F59E0B', display:'6.67%'  },
-  { label:'원부자재',    percent:30,    color:'#10B981', display:'30%'    },
-  { label:'인건비',      percent:20,    color:'#60A5FA', display:'20%'    },
-  { label:'공과잡비세금',percent:10,    color:'#A78BFA', display:'10%'    },
-  { label:'순이익',      percent:33.33, color:'#D4537E', display:'30~35%' },
+  { label:'반죽',        percent:20,    color:'#10B981', display:'20%'    },
+  { label:'부재료',      percent:8,     color:'#F59E0B', display:'8%'     },
+  { label:'세금·경비',   percent:12,    color:'#A78BFA', display:'12%'    },
+  { label:'인건비·관리', percent:20.76, color:'#60A5FA', display:'20.8%'  },
+  { label:'순이익',      percent:39.24, color:'#D4537E', display:'39.2%'  },
 ]
 
 const RADIAN = Math.PI / 180
@@ -78,12 +78,12 @@ function PieLabel({ cx, cy, midAngle, innerRadius, outerRadius, payload }) {
   const y = cy + r * Math.sin(-midAngle * RADIAN)
   const small = payload.percent < 12
   return (
-    <text textAnchor="middle" fill="#fff" fontSize={small ? 11 : 13} fontWeight="700">
+    <text textAnchor="middle" fill="#fff" fontSize={small ? 14 : 16} fontWeight="700">
       {small
         ? <tspan x={x} y={y}>{payload.display}</tspan>
         : <>
-            <tspan x={x} y={y - 9}>{payload.label}</tspan>
-            <tspan x={x} y={y + 9}>{payload.display}</tspan>
+            <tspan x={x} y={y - 11}>{payload.label}</tspan>
+            <tspan x={x} y={y + 11}>{payload.display}</tspan>
           </>
       }
     </text>
@@ -406,7 +406,7 @@ function DonutChart({ visible }) {
         )}
         <div className="donut-center">
           <span className="donut-center__label">순이익</span>
-          <strong className="donut-center__value">30~35%</strong>
+          <strong className="donut-center__value">39.2%</strong>
         </div>
       </div>
     </div>
@@ -417,14 +417,16 @@ function DonutChart({ visible }) {
 function Revenue() {
   const [ref, visible] = useScrollReveal({ threshold: 0.15 })
   const tableRef = useRef(null)
-  const [rowsOn, setRowsOn] = useState(Array(6).fill(false))
+  const [rowsOn, setRowsOn] = useState(Array(8).fill(false))
   const rows = [
-    { label:'매출',              amount:'15,000,000원', ratio:'100%'    },
-    { label:'임대료',             amount:'1,000,000원',  ratio:'6.67%'   },
-    { label:'인건비(점주님 제외)', amount:'3,000,000원',  ratio:'20%'     },
-    { label:'원부자재',            amount:'4,500,000원',  ratio:'30%'     },
-    { label:'공과금/고정비/세금',   amount:'1,500,000원',  ratio:'10%'     },
-    { label:'순이익',              amount:'5,000,000원',  ratio:'30~35%', profit:true },
+    { label:'매출',       amount:'43,340,500원',  ratio:'100%'   },
+    { label:'반죽',       amount:'8,668,100원',   ratio:'20%'    },
+    { label:'부재료',     amount:'3,467,240원',   ratio:'8%'     },
+    { label:'세금·경비',  amount:'5,200,860원',   ratio:'12%'    },
+    { label:'인건비',     amount:'6,000,000원',   ratio:'고정'    },
+    { label:'월세·관리',  amount:'3,000,000원',   ratio:'고정'    },
+    { label:'지출계',     amount:'26,336,200원',  ratio:'-'      },
+    { label:'순이익',     amount:'17,004,300원',  ratio:'39.2%', profit:true },
   ]
   useEffect(() => {
     if (!tableRef.current) return
@@ -493,8 +495,13 @@ function Revenue() {
             </h2>
         }
         <p className={`revenue__sub reveal${visible?' visible':''}`} style={{transitionDelay:'.15s'}}>투명하고 정직하게 보여드리겠습니다</p>
-        <p className={`revenue__challenge reveal${visible?' visible':''}`} style={{transitionDelay:'.2s'}}>
-          "타 프랜차이즈, 매출만 높으면 그만일까요? 높은 매출, 몸만 힘들고 남는 게 없다면?"
+        <div className="revenue__big-num" style={{marginTop:16}}>
+          순이익률&nbsp;
+          <span className="text-grad-gold" style={{fontSize:'clamp(28px,3.5vw,48px)', fontFamily:'var(--font-display)', fontWeight:700}}>39.2%</span>
+        </div>
+        <p className="revenue__bottom-copy">
+          시원하게 대답해 드립니다!<br />
+          시대가 변한 만큼, <strong>지금은 수익률까지 따져야 할 때!</strong>
         </p>
       </div>
       <div className="revenue__body">
@@ -516,17 +523,12 @@ function Revenue() {
               ))}
             </tbody>
           </table>
-          <div className="revenue__big-num">
-            최대&nbsp;
-            <span className="text-grad-gold" style={{fontSize:'clamp(32px,4vw,56px)', fontFamily:'var(--font-display)', fontWeight:700}}>30~35%</span>
-          </div>
-          <p className="revenue__bottom-copy">
-            시원하게 대답해 드립니다!<br />
-            시대가 변한 만큼, <strong>지금은 수익률까지 따져야 할 때!</strong>
-          </p>
-          <p className="revenue__notice">* 상일동 직영점 기준. 입지·운영 방식에 따라 달라질 수 있습니다.</p>
+          <p className="revenue__notice">* 상일동 직영점 3월 실제 매출 기준. 입지·운영 방식에 따라 달라질 수 있습니다.</p>
         </div>
       </div>
+      <p className="revenue__mid-copy">
+        "타 프랜차이즈, 매출만 높으면 그만일까요? 높은 매출, 몸만 힘들고 남는 게 없다면?"
+      </p>
     </section>
   )
 }

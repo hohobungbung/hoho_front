@@ -49,7 +49,7 @@ export default function Nav() {
       <div className="nav__inner">
         {/* 🖼 로고 교체 포인트: SVG 받으면 아래 img 태그의 display를 block으로, 텍스트 로고는 숨기기 */}
         <NavLink to="/" className="nav__logo" onClick={handleLogoClick}>
-          <img src="/main_logo.svg" alt="호호붕붕" />
+          <img src="/images/main_logo.svg" alt="호호붕붕" />
         </NavLink>
 
         <div className="nav__menu">

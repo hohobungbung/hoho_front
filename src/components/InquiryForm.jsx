@@ -113,7 +113,13 @@ export default function InquiryForm() {
         method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ name:form.name, phone:form.phone, startupType:form.startupType||null, region:form.region||null, message:form.message||null, privacyConsent:form.privacyConsent }),
       })
-      if (!res.ok) { const d = await res.json(); if (d&&typeof d==='object') setErrors(d); else alert('오류가 발생했습니다.'); return }
+      if (!res.ok) {
+        const d = await res.json().catch(() => ({}))
+        if (res.status === 429) { alert(d.error || '잠시 후 다시 시도해 주세요.'); return }
+        if (d && typeof d === 'object') setErrors(d)
+        else alert('오류가 발생했습니다.')
+        return
+      }
       setSuccess(true); setForm(initial)
     } catch { alert('서버에 연결할 수 없습니다.') }
     finally { setLoading(false) }

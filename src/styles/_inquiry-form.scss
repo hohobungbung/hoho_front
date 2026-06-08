@@ -2,12 +2,8 @@
 // 상담 신청 폼
 // ===========================
 
-// 섹션 배경 — 🖼 이미지 교체: url('/images/inquiry-bg.jpg') 로 변경
 .inquiry {
   padding: 100px 20px;
-  background-image: url('/images/inquiry-bg.jpg');
-  background-size: cover;
-  background-position: center;
   background-color: var(--ivory);
   position: relative;
 }

@@ -5,8 +5,6 @@
   position: relative; padding: 110px 20px;
   background-color: var(--white);
   overflow: hidden;
-  // 🖼 이미지 교체: background-image: url('/images/brand-bg.jpg');
-  background-size: cover; background-position: center;
 }
 .brand-preview__overlay { display: none; }
 .brand-preview__inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; text-align: center; }
