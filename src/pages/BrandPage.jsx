@@ -112,7 +112,7 @@ export default function BrandPage() {
           </h2>
           <div className="divider divider--left" />
 
-          <div ref={r1} style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:72, alignItems:'start', marginBottom:64 }}>
+          <div ref={r1} className="brand-concept-grid" style={{ marginBottom:64 }}>
             <div className={`jinis__img-area reveal-left${v1?' visible':''}`} style={{ aspectRatio:'4/3' }}>
               {IMAGES.brandConcept
                 ? <img src={IMAGES.brandConcept} alt="호호붕붕 매장" style={{width:'100%',height:'100%',objectFit:'cover'}} />
