@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 
 const navItems = [
@@ -23,17 +24,20 @@ const navItems = [
 export default function Nav() {
   const navigate = useNavigate()
   const { pathname } = useLocation()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const handleLogoClick = (e) => {
     if (pathname === '/') {
       e.preventDefault()
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
+    setMenuOpen(false)
   }
 
   const handleSubClick = (to) => {
     const [path, hash] = to.split('#')
     navigate(path)
+    setMenuOpen(false)
     if (hash) setTimeout(() => {
       const el = document.getElementById(hash)
       if (el) {
@@ -47,11 +51,11 @@ export default function Nav() {
   return (
     <nav className="nav">
       <div className="nav__inner">
-        {/* 🖼 로고 교체 포인트: SVG 받으면 아래 img 태그의 display를 block으로, 텍스트 로고는 숨기기 */}
         <NavLink to="/" className="nav__logo" onClick={handleLogoClick}>
           <img src="/images/main_logo.svg" alt="호호붕붕" />
         </NavLink>
 
+        {/* 데스크탑 메뉴 */}
         <div className="nav__menu">
           {navItems.map(item => (
             <div className="nav__item" key={item.to}>
@@ -77,7 +81,46 @@ export default function Nav() {
             </div>
           ))}
         </div>
+
+        {/* 햄버거 버튼 */}
+        <button
+          className={`nav__hamburger${menuOpen ? ' open' : ''}`}
+          onClick={() => setMenuOpen(v => !v)}
+          aria-label="메뉴 열기"
+        >
+          <span /><span /><span />
+        </button>
       </div>
+
+      {/* 모바일 메뉴 */}
+      {menuOpen && (
+        <div className="nav__mobile-menu">
+          {navItems.map(item => (
+            <div key={item.to} className="nav__mobile-item">
+              <NavLink
+                to={item.to}
+                className="nav__mobile-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </NavLink>
+              {item.sub && (
+                <div className="nav__mobile-sub">
+                  {item.sub.map(s => (
+                    <button
+                      key={s.to}
+                      className="nav__mobile-sub-item"
+                      onClick={() => handleSubClick(s.to)}
+                    >
+                      {s.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </nav>
   )
 }
