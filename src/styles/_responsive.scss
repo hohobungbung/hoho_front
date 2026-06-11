@@ -102,28 +102,37 @@
   .fz-row__desc { font-size: 13px; line-height: 1.7; }
   .four-zero__edu { font-size: 12px; padding: 6px 14px; word-break: keep-all; text-align: center; }
 
-  // 창업유형 섹션 — 이미지 위, 텍스트 아래
+  // 창업유형 섹션 — 이미지 위, 텍스트 아래, 빈 공간 제거
+  .stype-sticky {
+    height: auto;
+    min-height: unset;
+  }
+  .stype-stage {
+    height: 520px;
+    flex: none;
+  }
   .stype-slide {
     grid-template-columns: 1fr;
-    grid-template-rows: 200px auto;
+    grid-template-rows: 180px auto;
     padding: 12px 20px 20px;
-    gap: 16px;
+    gap: 12px;
     align-items: start;
   }
   .stype-slide__visual {
     display: flex;
     order: -1;
-    height: 200px;
+    height: 180px;
     width: 100%;
     border-radius: 16px;
     overflow: hidden;
   }
   .stype-slide__visual .img-skeleton-wrap,
   .stype-slide__visual img { width: 100%; height: 100%; object-fit: cover; object-position: top center; border-radius: 16px; }
-  .stype-slide__emoji { font-size: 80px; }
-  .stype-slide__title { font-size: 24px; }
-  .stype-slide__brief { font-size: 14px; }
-  .stype-slide__detail { font-size: 13px; line-height: 1.7; }
+  .stype-slide__emoji { font-size: 80px; line-height: 180px; text-align: center; width: 100%; }
+  .stype-slide__title { font-size: 22px; }
+  .stype-slide__brief { font-size: 13px; }
+  .stype-slide__detail { font-size: 13px; line-height: 1.6; }
+  .stype-dots { padding: 12px 0 16px; }
 
   // 도넛 차트
   .donut-chart-container {
