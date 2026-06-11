@@ -303,15 +303,21 @@ function JinisQuality() {
 
 /* ─ 도넛 차트 (recharts) ─ */
 function DonutChart({ visible }) {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 600
+  const size = isMobile ? 240 : 380
+  const cx = size / 2
+  const innerR = isMobile ? 47 : 75
+  const outerR = isMobile ? 112 : 178
+
   return (
     <div className="donut-wrap">
       <div className={`donut-chart-container${visible ? ' visible' : ''}`}>
         {visible && (
-          <PieChart width={380} height={380}>
+          <PieChart width={size} height={size}>
             <Pie
               data={DONUT_DATA}
-              cx={190} cy={190}
-              innerRadius={75} outerRadius={178}
+              cx={cx} cy={cx}
+              innerRadius={innerR} outerRadius={outerR}
               dataKey="percent"
               startAngle={90} endAngle={450}
               isAnimationActive={false}
