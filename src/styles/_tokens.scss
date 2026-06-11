@@ -1,0 +1,25 @@
+// ===========================
+// 디자인 토큰 — 색상, 폰트
+// 여기서 바꾸면 전체 사이트에 반영됩니다
+// ===========================
+:root {
+  // ─ 색상 ─
+  --brand-pink: #D4537E;    // 메인 핑크 (버튼, 강조)
+  --soft-pink: #F4C0D1;     // 연한 핑크 (장식)
+  --light-pink: #FBEAF0;    // 아주 연한 핑크 (배경)
+  --ivory: #FAF6F0;         // 전체 페이지 배경
+  --gold: #f7c80e;          // 금색 (로고, 강조)
+  --gold-light: #e89520;    // 밝은 금색
+  --burgundy: #ed8cbb;      // 짙은 버건디
+  --text: #2C2C2A;          // 기본 텍스트
+  --white: #ffffff;
+
+  // ─ 고정 크기 ─
+  --nav-h: 64px;   // 네비게이션 높이
+  --tab-h: 52px;   // 스티키 탭 높이
+
+  // ─ 폰트 ─
+  --font-display: 'Playfair Display', serif;   // 영문 장식
+  --font-korean: 'Gmarket Sans', sans-serif;   // 한글 제목
+  --font-body: 'Pretendard', sans-serif;       // 본문
+}

@@ -1,0 +1,113 @@
+// ===========================
+// Revenue 매출 섹션 (도넛 + 표)
+// ⚠️ npm install recharts 필요
+// ===========================
+.revenue {
+  position: relative;
+  padding: 72px 20px;
+  background-color: var(--ivory);
+  background-size: cover;
+  background-position: center;
+}
+
+.revenue__panel {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+// ── 전광판 띠 ──
+.revenue__ticker {
+  position: absolute;
+  left: 0; right: 0;
+  overflow: hidden;
+  z-index: 2;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  background-color: var(--light-pink);
+}
+.revenue__ticker--top    { top: 0; }
+.revenue__ticker--bottom { bottom: 0; }
+
+.revenue__ticker__track {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeRTL 32s linear infinite;
+  align-items: center;
+}
+.revenue__ticker__track--rtl {
+  animation-direction: reverse;
+}
+
+.revenue__ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--font-korean);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0 40px;
+  color: #444;
+  text-shadow: none;
+}
+.revenue__ticker__sep {
+  font-size: 14px;
+  color: rgba(0,0,0,0.25);
+}
+
+.revenue__inner { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; text-align: center; }
+.revenue__tag { font-family: var(--font-display); font-style: italic; font-size: 15px; color: var(--soft-pink); letter-spacing: .15em; margin-bottom: 16px; font-weight: 700; }
+.revenue__title { font-family: var(--font-korean); font-size: clamp(28px, 4vw, 46px); font-weight: 800; color: #fff; margin-bottom: 12px; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+.revenue__sub { font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 8px; font-weight: 500; }
+.revenue__challenge { font-size: 15px; color: rgba(255,255,255,0.75); margin-bottom: 56px; line-height: 1.9; font-weight: 400; }
+
+// 도넛 + 표 좌우 레이아웃
+.revenue__body { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; }
+
+// 도넛 차트
+.donut-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.donut-chart-container {
+  position: relative; width: 360px; height: 360px; flex-shrink: 0;
+  opacity: 0;
+  &.visible { animation: donutPop 1.0s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+}
+.donut-chart-container svg { display: block; }
+.donut-chart-container,
+.donut-chart-container svg,
+.donut-chart-container svg * { outline: none; }
+.donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
+.donut-center__label { display: block; font-family: var(--font-korean); font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
+.donut-center__value { display: block; font-family: var(--font-korean); font-size: 26px; font-weight: 800; color: #fff; }
+
+// 표
+.revenue__table-side { display: flex; flex-direction: column; gap: 14px; }
+.revenue__table-headline { margin-bottom: 4px; }
+.revenue__table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; clip-path: inset(0); }
+.revenue__table th {
+  background: rgba(180,40,80,0.85);
+  color: #fff; padding: 14px 18px;
+  font-family: var(--font-korean); font-size: 14px; font-weight: 700;
+}
+.revenue__table th, .revenue__table td { text-align: center; }
+.revenue__table tr.row-hidden { opacity: 0; transform: translateX(80px); }
+.revenue__table tr.row-visible { animation: slideInRow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.revenue__table td {
+  padding: 13px 18px; font-size: 14px; font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.45);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.revenue__table tbody tr:hover td { background: rgba(255,255,255,0.08); }
+.revenue__table .profit-row {
+  color: var(--gold);
+  font-weight: 800; font-size: 15px;
+  background: rgba(180,120,0,0.3);
+}
+.revenue__notice { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 8px; text-align: left; }
+.revenue__big-num { text-align: center; color: #fff; font-family: var(--font-korean); font-size: 20px; margin-top: 8px; font-weight: 700; }
+.revenue__bottom-copy { text-align: center; font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.9; }
+.revenue__bottom-copy strong { color: var(--gold); font-weight: 800; }
+.revenue__mid-copy { text-align: center; font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.9; font-weight: 400; margin-top: 32px; padding: 0 16px; }

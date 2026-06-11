@@ -1,0 +1,53 @@
+// ===========================
+// 반응형 (모바일 대응)
+// ===========================
+
+// 태블릿 이하 (900px)
+@media (max-width: 900px) {
+  .jinis__grid { grid-template-columns: 1fr; }
+  .menu-grid, .menu-photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .revenue__body { grid-template-columns: 1fr; gap: 36px; justify-items: center; }
+  .donut-chart-container { width: 300px; height: 300px; }
+  .monthly-weeks { grid-template-columns: repeat(2, 1fr); }
+  .location-info { grid-template-columns: 1fr; }
+  .reasons__grid { grid-template-columns: 1fr 1fr; }
+  .franchise-type { grid-template-columns: 1fr; }
+  .franchise-type:nth-child(even) { direction: ltr; }
+  .footer__top { flex-direction: column; align-items: flex-start; }
+  .fz-row { grid-template-columns: 80px 1fr; gap: 24px; }
+  .fz-row--reverse { grid-template-columns: 1fr 80px; }
+  .fz-row__icon-circle { width: 72px; height: 72px; font-size: 28px; }
+  .stype-card-full { grid-template-columns: 1fr; grid-template-rows: 200px 1fr; }
+  .stype-book { height: min(calc(100vh - var(--nav-h) - 40px), 560px); }
+  .stype-card-full__content { padding: 28px 28px; gap: 12px; }
+}
+
+// 팬 캐러셀 (768px)
+@media (max-width: 768px) {
+  .fan-stage { height: 240px; }
+  .fan-btn { top: 80px; width: 42px; height: 42px; font-size: 20px; }
+  .fan-section { padding: 0 56px; }
+  .franchise-type { grid-template-columns: 1fr; }
+  .franchise-type:nth-child(even) { direction: ltr; }
+  .envelope-body { grid-template-columns: 1fr; }
+  .envelope-left { min-height: 200px; padding: 32px 28px; }
+  .envelope-left__bread-placeholder { display: none; }
+  .envelope-right { padding: 32px 24px; }
+}
+
+// 모바일 (600px)
+@media (max-width: 600px) {
+  .container { padding: 0 20px; }
+  .nav__inner { padding: 0 20px; }
+  .sticky-tabs__inner { padding: 0 16px; }
+  .sticky-tab { padding: 8px 14px; font-size: 12px; }
+  .form-row { grid-template-columns: 1fr; }
+  .reasons__grid { grid-template-columns: 1fr; }
+  .reasons__grid--2 { grid-template-columns: 1fr; }
+  .monthly-weeks { grid-template-columns: 1fr 1fr; }
+  .factory__steps { flex-wrap: wrap; }
+  .footer__info { flex-direction: column; gap: 4px; }
+  .fz-char { font-size: 64px; }
+  .fan-stage { height: 200px; }
+  .fan-section { padding: 0 48px; }
+}

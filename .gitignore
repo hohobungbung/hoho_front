@@ -23,6 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 
+# 환경변수
+.env
+.env.local
+.env.development
+.env.production
+
 # 집파일
 *.zip
 
