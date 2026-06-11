@@ -8,7 +8,7 @@ body {
   color: var(--text);
   background: var(--ivory);
   -webkit-font-smoothing: antialiased;
-  overflow-x: clip; // 가로 스크롤 방지 — hidden은 fixed 요소도 잘라냄
+  // overflow-x는 .app-wrap에서 관리 (fixed 요소 보호)
 }
 img { max-width: 100%; display: block; }
 button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }

@@ -20,16 +20,18 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Nav />
+      <div className="app-wrap">
+        <Nav />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/brand" element={<BrandPage />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/location" element={<LocationPage />} />
+          <Route path="/franchise" element={<FranchisePage />} />
+        </Routes>
+        <Footer />
+      </div>
       <FloatingCTA />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/brand" element={<BrandPage />} />
-        <Route path="/menu" element={<MenuPage />} />
-        <Route path="/location" element={<LocationPage />} />
-        <Route path="/franchise" element={<FranchisePage />} />
-      </Routes>
-      <Footer />
     </BrowserRouter>
   )
 }

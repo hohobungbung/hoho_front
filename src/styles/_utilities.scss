@@ -2,6 +2,9 @@
 // 공통 유틸리티
 // ===========================
 
+// 앱 래퍼 — fixed 요소(FloatingCTA)를 보호하기 위해 body 대신 여기서 overflow 관리
+.app-wrap { overflow-x: clip; }
+
 // 레이아웃
 .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
 .section { padding: 100px 20px; }

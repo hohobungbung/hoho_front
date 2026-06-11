@@ -215,3 +215,15 @@
   background: var(--brand-pink);
   transform: scale(1.4);
 }
+
+// ── 모바일 전용 ──
+@media (max-width: 600px) {
+  .stype-sticky {
+    height: auto;
+    justify-content: flex-start;
+  }
+  .stype-stage {
+    height: 500px;
+    flex: none;
+  }
+}
