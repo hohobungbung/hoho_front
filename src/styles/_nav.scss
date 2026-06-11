@@ -23,3 +23,63 @@
 .nav__item:hover .nav__dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 .nav__dropdown-item { display: block; width: 100%; padding: 12px 20px; font-family: var(--font-korean); font-size: 13px; font-weight: 500; color: var(--text); background: none; border: none; text-align: left; cursor: pointer; box-sizing: border-box; transition: background .15s, color .15s; }
 .nav__dropdown-item:hover { background: var(--light-pink); color: var(--brand-pink); }
+
+// ── 햄버거 버튼 ──
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  background: none; border: none;
+  cursor: pointer; padding: 4px;
+
+  span {
+    display: block;
+    width: 100%; height: 2px;
+    background: var(--brand-pink);
+    border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+  }
+
+  &.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  &.open span:nth-child(2) { opacity: 0; }
+  &.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+
+// ── 모바일 메뉴 ──
+.nav__mobile-menu {
+  position: absolute;
+  top: var(--nav-h);
+  left: 0; right: 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--soft-pink);
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  z-index: 99;
+  padding: 8px 0 16px;
+}
+
+.nav__mobile-item { border-bottom: 1px solid var(--light-pink); }
+.nav__mobile-link {
+  display: block;
+  padding: 16px 24px;
+  font-family: var(--font-korean);
+  font-size: 15px; font-weight: 600;
+  color: var(--text);
+  &.active { color: var(--brand-pink); }
+}
+
+.nav__mobile-sub { background: var(--light-pink); }
+.nav__mobile-sub-item {
+  display: block; width: 100%;
+  padding: 12px 36px;
+  font-family: var(--font-korean);
+  font-size: 13px; font-weight: 500;
+  color: #666; background: none; border: none;
+  text-align: left; cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav__menu { display: none; }
+  .nav__hamburger { display: flex; }
+}

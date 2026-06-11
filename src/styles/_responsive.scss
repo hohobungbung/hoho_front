@@ -50,4 +50,29 @@
   .fz-char { font-size: 64px; }
   .fan-stage { height: 200px; }
   .fan-section { padding: 0 48px; }
+
+  // 4무 섹션
+  .fz-inner { padding: 0 16px; }
+  .fz-row { grid-template-columns: 64px 1fr; gap: 16px; padding: 28px 0; }
+  .fz-row--reverse { grid-template-columns: 64px 1fr; }
+  .fz-row__icon-circle { width: 56px; height: 56px; font-size: 22px; }
+  .fz-row__name { font-size: 18px; }
+  .fz-row__desc { font-size: 14px; }
+  .four-zero__edu { font-size: 12px; padding: 6px 14px; word-break: keep-all; }
+
+  // 창업유형 섹션
+  .stype-slide { grid-template-columns: 1fr; padding: 16px 24px; gap: 16px; }
+  .stype-slide__visual { display: none; }
+  .stype-slide__title { font-size: 28px; }
+  .stype-slide__brief { font-size: 15px; }
+  .stype-slide__detail { font-size: 14px; }
+
+  // 도넛 차트
+  .donut-chart-container {
+    width: 260px; height: 260px;
+    transform: scale(0.7);
+    transform-origin: top center;
+    margin-bottom: -80px;
+  }
+  .revenue__body { gap: 0; }
 }
