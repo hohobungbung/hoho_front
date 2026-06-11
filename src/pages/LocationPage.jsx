@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-const KAKAO_JS_KEY = '706c1a332d3e9941572d5f35555deffe'
 const STORE_LAT = 37.55666
 const STORE_LNG = 127.16808
 const STORE_NAME = '호호붕붕 상일동점'
@@ -32,11 +31,16 @@ export default function LocationPage() {
       return
     }
 
-    const script = document.createElement('script')
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_JS_KEY}&autoload=false`
-    script.onload = () => window.kakao.maps.load(renderMap)
-    script.onerror = () => setMapError(true)
-    document.head.appendChild(script)
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/kakao/key`)
+      .then(r => r.json())
+      .then(({ jsKey }) => {
+        const script = document.createElement('script')
+        script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${jsKey}&autoload=false`
+        script.onload = () => window.kakao.maps.load(renderMap)
+        script.onerror = () => setMapError(true)
+        document.head.appendChild(script)
+      })
+      .catch(() => setMapError(true))
 
     return () => {
       // 스크립트는 재사용을 위해 유지 (unmount 시 제거하지 않음)

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { TITLE_IMGS } from '../config/images'
 
-const API_URL = 'http://localhost:8080/api/inquiries'
+const API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/inquiries`
 const initial = { name:'', phone:'', startupType:'', region:'', message:'', privacyConsent:false }
 
 function PrivacyModal({ onClose, onAgree }) {

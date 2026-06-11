@@ -97,3 +97,9 @@
   91%  { transform: translateX(2px); }
   100% { transform: translateX(0); opacity: 1; }
 }
+
+// 스켈레톤 shimmer
+@keyframes skeletonShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

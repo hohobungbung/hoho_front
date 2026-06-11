@@ -10,6 +10,7 @@
 
 // 2. 공통 유틸
 @use 'utilities';   // 공통 클래스 (reveal, keyword-box 등)
+@use 'skeleton';    // 이미지 스켈레톤 로더
 
 // 3. 공통 컴포넌트
 @use 'nav';
