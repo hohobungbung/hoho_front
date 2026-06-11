@@ -3,7 +3,7 @@
 // ===========================
 
 // 가로 스크롤 방지 — html에는 절대 적용 금지 (sticky 깨짐)
-body { overflow-x: clip; }
+// body overflow-x: hidden 은 _reset.scss 에 있음
 
 // 태블릿 이하 (900px)
 @media (max-width: 900px) {
@@ -119,7 +119,7 @@ body { overflow-x: clip; }
     overflow: hidden;
   }
   .stype-slide__visual .img-skeleton-wrap,
-  .stype-slide__visual img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
+  .stype-slide__visual img { width: 100%; height: 100%; object-fit: cover; object-position: top center; border-radius: 16px; }
   .stype-slide__emoji { font-size: 80px; }
   .stype-slide__title { font-size: 24px; }
   .stype-slide__brief { font-size: 14px; }

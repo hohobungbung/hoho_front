@@ -8,7 +8,7 @@ body {
   color: var(--text);
   background: var(--ivory);
   -webkit-font-smoothing: antialiased;
-  overflow-x: clip; // fz-row 슬라이드 가로 스크롤 방지 (hidden 쓰면 sticky 깨짐)
+  overflow-x: hidden; // 가로 스크롤 방지 (body에만 적용 시 sticky 정상 동작)
 }
 img { max-width: 100%; display: block; }
 button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }

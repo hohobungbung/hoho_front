@@ -22,6 +22,7 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
 }
 
 .stype-particle {
@@ -47,6 +48,7 @@
   position: relative;
   width: 100%;
   flex: 1;
+  overflow: hidden;
 }
 
 // ── 개별 슬라이드 ──
