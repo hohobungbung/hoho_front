@@ -434,9 +434,6 @@ function Revenue() {
           <p className="revenue__notice">* 상일동 직영점 3월 실제 매출 기준. 입지·운영 방식에 따라 달라질 수 있습니다.</p>
         </div>
       </div>
-      <p className="revenue__mid-copy">
-        "타 프랜차이즈, 매출만 높으면 그만일까요? 높은 매출, 몸만 힘들고 남는 게 없다면?"
-      </p>
     </section>
   )
 }
