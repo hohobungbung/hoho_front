@@ -104,12 +104,13 @@
 
   // 창업유형 섹션 — 이미지 위, 텍스트 아래, 빈 공간 제거
   .stype-sticky {
-    height: auto;
-    min-height: unset;
+    height: auto !important;
+    min-height: unset !important;
+    justify-content: flex-start;
   }
   .stype-stage {
-    height: 520px;
-    flex: none;
+    height: 500px !important;
+    flex: none !important;
   }
   .stype-slide {
     grid-template-columns: 1fr;
