@@ -53,14 +53,34 @@ body { overflow-x: clip; }
   .fan-stage { height: 200px; }
   .fan-section { padding: 0 48px; }
 
-  // 브랜드 페이지
+  // 브랜드 페이지 — 이미지 위, 텍스트 아래
+  .brand-concept-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .brand-full__body p { font-size: 15px; line-height: 1.9; }
   .brand-diff-grid { grid-template-columns: 1fr; gap: 12px; }
   .brand-diff-card { padding: 20px; }
   .img-slider { max-width: 100%; }
-  .brand-full__highlight { padding: 24px 20px; }
+  .brand-full__highlight { padding: 20px 16px; font-size: 15px; }
   .factory__steps { flex-wrap: wrap; }
   .factory__step { clip-path: none; flex: 0 0 calc(50% - 4px); }
   .factory__step:first-child { clip-path: none; }
+
+  // 창업안내 브랜드 약속 텍스트
+  .brand-promise__text {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #555;
+    word-break: keep-all;
+    text-align: left;
+    max-width: 100%;
+  }
+  .reasons__brand-promise { padding: 28px 20px; }
+
+  // 창업비용 표
+  .cost__table td, .cost__table th { padding: 12px 8px; font-size: 13px; }
 
   // 4무 섹션
   .fz-section { padding: 60px 0; }
@@ -82,10 +102,26 @@ body { overflow-x: clip; }
   .fz-row__desc { font-size: 13px; line-height: 1.7; }
   .four-zero__edu { font-size: 12px; padding: 6px 14px; word-break: keep-all; text-align: center; }
 
-  // 창업유형 섹션
-  .stype-slide { grid-template-columns: 1fr; padding: 16px 24px; gap: 12px; }
-  .stype-slide__visual { display: none; }
-  .stype-slide__title { font-size: 26px; }
+  // 창업유형 섹션 — 이미지 위, 텍스트 아래
+  .stype-slide {
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px auto;
+    padding: 12px 20px 20px;
+    gap: 16px;
+    align-items: start;
+  }
+  .stype-slide__visual {
+    display: flex;
+    order: -1;
+    height: 200px;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .stype-slide__visual .img-skeleton-wrap,
+  .stype-slide__visual img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
+  .stype-slide__emoji { font-size: 80px; }
+  .stype-slide__title { font-size: 24px; }
   .stype-slide__brief { font-size: 14px; }
   .stype-slide__detail { font-size: 13px; line-height: 1.7; }
 

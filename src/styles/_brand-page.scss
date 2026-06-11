@@ -38,6 +38,23 @@
 .page-hero__tag { font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--brand-pink); letter-spacing: .15em; margin-bottom: 12px; }
 .page-hero__title { font-family: var(--font-korean); font-size: clamp(28px, 4vw, 44px); font-weight: 700; color: var(--text); }
 
+.brand-concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.brand-promise__text {
+  font-size: 16px;
+  line-height: 2;
+  color: #555;
+  word-break: keep-all;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .brand-full { padding: 100px 20px; background: var(--white); }
 .brand-full__inner { max-width: 900px; margin: 0 auto; }
 .brand-full__body p { font-size: 17px; line-height: 2.1; color: #555; margin-bottom: 24px; word-break: keep-all; }

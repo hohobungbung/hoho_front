@@ -247,11 +247,11 @@ export default function FranchisePage() {
             </div>
             <div className="reasons__brand-promise">
               <p style={{ fontFamily:'var(--font-korean)', fontSize:16, color:'#888', marginBottom:16 }}>창업의 꿈, 호호붕붕과 함께 하세요</p>
-              <p style={{ fontSize:16, lineHeight:2, color:'#555', wordBreak:'keep-all', maxWidth:640, margin:'0 auto' }}>
-                호호붕붕이 가장 빛나는 브랜드가 아닐 수 있습니다.<br />
-                하지만 매일, 매 순간 고객에게 진심을 다했고,<br />
-                <strong style={{ color:'var(--brand-pink)', fontSize:18 }}>그 결과 일 매출 180만원이라는 숫자를 만들었습니다.</strong><br /><br />
-                호호붕붕과 50년, 100년을 함께 할 가맹 대표님을 기다립니다.
+              <p className="brand-promise__text">
+                호호붕붕이 가장 빛나는 브랜드가 아닐 수 있습니다.
+                하지만 매일, 매 순간 고객에게 진심을 다했고,{' '}
+                <strong style={{ color:'var(--brand-pink)', fontSize:18 }}>그 결과 일 매출 180만원이라는 숫자를 만들었습니다.</strong>
+                {' '}호호붕붕과 50년, 100년을 함께 할 가맹 대표님을 기다립니다.
               </p>
             </div>
           </div>
@@ -296,10 +296,22 @@ export default function FranchisePage() {
             <table className="cost__table">
               <thead><tr><th>항목</th><th>내용</th><th style={{ textAlign:'right' }}>금액</th></tr></thead>
               <tbody>
-                {[{ i:'장비 구입비', d:'붕어빵 틀, 가스 버너, 매대 등', a:'약 1,200만원' },{ i:'초기 재료비', d:'밀가루, 팥, 크림 등 1개월치', a:'약 300만원' },{ i:'교육비', d:'2주~1개월 실전 교육 (원부자재 실비)', a:'200만원' },{ i:'기타 준비금', d:'인허가, 예비 자금 등', a:'약 800만원' }].map(c => (
-                  <tr key={c.i}><td style={{ fontWeight:600 }}>{c.i}</td><td style={{ color:'#888' }}>{c.d}</td><td style={{ textAlign:'right' }}>{c.a}</td></tr>
+                {[
+                  { i:'장비 구입비', d:'붕어빵 틀, 가스 버너,\n매대 등',              a:'약 1,200만원' },
+                  { i:'초기 재료비', d:'밀가루, 팥, 크림 등\n1개월치',                a:'약 300만원'  },
+                  { i:'교육비',     d:'2주~1개월 실전 교육\n(원부자재 실비)',          a:'200만원'     },
+                  { i:'기타 준비금', d:'인허가, 예비 자금 등',                        a:'약 800만원'  },
+                ].map(c => (
+                  <tr key={c.i}>
+                    <td style={{ fontWeight:600 }}>{c.i}</td>
+                    <td style={{ color:'#888', whiteSpace:'pre-line' }}>{c.d}</td>
+                    <td style={{ textAlign:'right', whiteSpace:'nowrap' }}>{c.a}</td>
+                  </tr>
                 ))}
-                <tr className="total"><td colSpan={2} style={{ fontWeight:700 }}>총 창업 비용</td><td style={{ textAlign:'right' }}>약 2,500만원</td></tr>
+                <tr className="total">
+                  <td colSpan={2} style={{ fontWeight:700 }}>총 창업 비용</td>
+                  <td style={{ textAlign:'right', whiteSpace:'nowrap' }}>약 2,500만원</td>
+                </tr>
               </tbody>
             </table>
             <p className="cost__notice">* 위 금액은 예상 비용이며 입지·장비 선택에 따라 달라질 수 있습니다.<br/>* 중형차 한 대 가격으로 시작할 수 있는 소자본 창업 모델입니다.</p>
