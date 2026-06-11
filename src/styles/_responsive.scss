@@ -2,8 +2,8 @@
 // 반응형 (모바일 대응)
 // ===========================
 
-// 전체 가로 스크롤 방지
-html, body { overflow-x: hidden; max-width: 100vw; }
+// 가로 스크롤 방지 — html에는 절대 적용 금지 (sticky 깨짐)
+body { overflow-x: clip; }
 
 // 태블릿 이하 (900px)
 @media (max-width: 900px) {
@@ -18,11 +18,8 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   .franchise-type:nth-child(even) { direction: ltr; }
   .footer__top { flex-direction: column; align-items: flex-start; }
   .fz-row { grid-template-columns: 80px 1fr; gap: 24px; }
-  .fz-row--reverse { grid-template-columns: 1fr 80px; }
+  .fz-row--reverse { grid-template-columns: 80px 1fr; direction: ltr; }
   .fz-row__icon-circle { width: 72px; height: 72px; font-size: 28px; }
-  .stype-card-full { grid-template-columns: 1fr; grid-template-rows: 200px 1fr; }
-  .stype-book { height: min(calc(100vh - var(--nav-h) - 40px), 560px); }
-  .stype-card-full__content { padding: 28px 28px; gap: 12px; }
 }
 
 // 팬 캐러셀 (768px)
@@ -32,61 +29,77 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   .fan-section { padding: 0 56px; }
   .franchise-type { grid-template-columns: 1fr; }
   .franchise-type:nth-child(even) { direction: ltr; }
-  .envelope-body { grid-template-columns: 1fr; }
-  .envelope-left { min-height: 200px; padding: 32px 28px; }
-  .envelope-left__bread-placeholder { display: none; }
-  .envelope-right { padding: 32px 24px; }
 }
 
 // 모바일 (600px)
 @media (max-width: 600px) {
+  // 공통
   .container { padding: 0 20px; }
   .nav__inner { padding: 0 20px; }
+  .section { padding: 60px 20px; }
+  .section-title { font-size: 22px; word-break: keep-all; }
+
+  // 탭
   .sticky-tabs__inner { padding: 0 16px; }
-  .sticky-tab { padding: 8px 14px; font-size: 12px; }
+  .sticky-tab { padding: 8px 12px; font-size: 12px; }
+
+  // 폼
   .form-row { grid-template-columns: 1fr; }
-  .reasons__grid { grid-template-columns: 1fr; }
-  .reasons__grid--2 { grid-template-columns: 1fr; }
-  .monthly-weeks { grid-template-columns: 1fr 1fr; }
-  .factory__steps { flex-wrap: wrap; }
+
+  // 푸터
   .footer__info { flex-direction: column; gap: 4px; }
-  .fz-char { font-size: 64px; }
+
+  // 팬
   .fan-stage { height: 200px; }
   .fan-section { padding: 0 48px; }
 
-  // 브랜드 페이지 3단 카드 → 1단
+  // 브랜드 페이지
   .brand-diff-grid { grid-template-columns: 1fr; gap: 12px; }
   .brand-diff-card { padding: 20px; }
-
-  // 브랜드 페이지 이미지 슬라이더
   .img-slider { max-width: 100%; }
+  .brand-full__highlight { padding: 24px 20px; }
+  .factory__steps { flex-wrap: wrap; }
+  .factory__step { clip-path: none; flex: 0 0 calc(50% - 4px); }
+  .factory__step:first-child { clip-path: none; }
 
   // 4무 섹션
-  .fz-inner { padding: 0 16px; }
-  .fz-row { grid-template-columns: 64px 1fr; gap: 16px; padding: 28px 0; }
-  .fz-row--reverse { grid-template-columns: 64px 1fr; }
-  .fz-row__icon-circle { width: 56px; height: 56px; font-size: 22px; }
-  .fz-row__name { font-size: 18px; }
-  .fz-row__desc { font-size: 14px; }
-  .four-zero__edu { font-size: 12px; padding: 6px 14px; word-break: keep-all; }
+  .fz-section { padding: 60px 0; }
+  .fz-inner { padding: 0 20px; }
+  .fz-row {
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+    padding: 24px 0;
+    direction: ltr;
+  }
+  .fz-row--reverse {
+    grid-template-columns: 56px 1fr;
+    direction: ltr;
+  }
+  .fz-row--reverse .fz-row__name,
+  .fz-row--reverse .fz-row__desc { text-align: left; }
+  .fz-row__icon-circle { width: 52px; height: 52px; font-size: 20px; }
+  .fz-row__name { font-size: 17px; margin-bottom: 6px; }
+  .fz-row__desc { font-size: 13px; line-height: 1.7; }
+  .four-zero__edu { font-size: 12px; padding: 6px 14px; word-break: keep-all; text-align: center; }
 
   // 창업유형 섹션
-  .stype-slide { grid-template-columns: 1fr; padding: 16px 24px; gap: 16px; }
+  .stype-slide { grid-template-columns: 1fr; padding: 16px 24px; gap: 12px; }
   .stype-slide__visual { display: none; }
-  .stype-slide__title { font-size: 28px; }
-  .stype-slide__brief { font-size: 15px; }
-  .stype-slide__detail { font-size: 14px; }
+  .stype-slide__title { font-size: 26px; }
+  .stype-slide__brief { font-size: 14px; }
+  .stype-slide__detail { font-size: 13px; line-height: 1.7; }
 
-  // 도넛 차트 — transform 대신 실제 크기 축소
+  // 도넛 차트
   .donut-chart-container {
-    width: 240px !important;
-    height: 240px !important;
-    overflow: hidden;
-  }
-  .donut-chart-container svg {
     width: 240px !important;
     height: 240px !important;
   }
   .revenue__body { gap: 16px; }
-  .revenue { overflow: hidden; }
+
+  // 창업안내 이유 카드
+  .reasons__grid { grid-template-columns: 1fr; }
+  .reasons__grid--2 { grid-template-columns: 1fr; }
+
+  // 월별 수익 카드
+  .monthly-weeks { grid-template-columns: 1fr 1fr; }
 }
