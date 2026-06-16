@@ -1,7 +1,7 @@
 const numbers = [
-  { value: '180만+', unit: '원 / 일', label: '성수기 일평균 매출\n(상일동 직영점 기준)' },
-  { value: '30~35', unit: '%', label: '순이익률\n(재료비·운영비 제외 후)' },
-  { value: '2,500', unit: '만원', label: '총 창업 비용\n(교육비 포함)' },
+  { value: '167만+', unit: '원 / 일', label: '3월 일평균 매출\n(상일동 직영점 기준)' },
+  { value: '35~39', unit: '%', label: '순이익률\n(재료비·운영비 제외 후)' },
+  { value: '2,000', unit: '만원+', label: '총 창업 비용\n(교육비 포함)' },
 ]
 
 export default function Revenue() {

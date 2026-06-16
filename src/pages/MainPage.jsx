@@ -134,7 +134,7 @@ function FourZeroRow({ item }) {
   return (
     <div ref={ref} className={`fz-row${item.fromLeft?'':' fz-row--reverse'} ${animClass}`.trim()}>
       <div className="fz-row__icon">
-        <div className="fz-row__icon-circle">{item.icon}</div>
+        <img src={item.img} alt={item.name} style={{ width:'120px', height:'120px', objectFit:'contain', mixBlendMode:'multiply' }} />
       </div>
       <div className="fz-row__text">
         <h3 className="fz-row__name">{item.name}</h3>
@@ -417,7 +417,7 @@ function Revenue() {
         <div className="revenue__table-side">
           <p className="revenue__table-headline">
             <span className="keyword-box keyword-box--gold">투자비대비 6개월안에 회수가능</span>
-            <span style={{fontSize:13, color:'rgba(255,255,255,.45)', marginLeft:10}}>(3평기준)</span>
+            <span style={{fontSize:13, color:'rgba(255,255,255,.45)', marginLeft:10}}>(4평기준)</span>
           </p>
           <table className="revenue__table" ref={tableRef}>
             <thead><tr><th>구분</th><th>금액</th><th>비율</th></tr></thead>

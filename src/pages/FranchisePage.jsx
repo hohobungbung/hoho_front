@@ -135,7 +135,7 @@ function StickyRevenueSection() {
                   {slide.type === 'month'
                     ? <MonthlyCard data={slide.data} index={0} />
                     : <div className="monthly-revenue__table-slide">
-                        <p style={{ fontFamily:'var(--font-korean)', fontSize:16, fontWeight:700, color:'var(--white)', textAlign:'center', marginBottom:20 }}>수익 구조 분석 (3평 기준)</p>
+                        <p style={{ fontFamily:'var(--font-korean)', fontSize:16, fontWeight:700, color:'var(--white)', textAlign:'center', marginBottom:20 }}>수익 구조 분석 (4평 기준)</p>
                         <RevenueTable activeRow={99} />
                         <p style={{ fontSize:12, color:'rgba(255,255,255,.3)', marginTop:12, textAlign:'center' }}>* 상일동 직영점 기준. 입지·운영 방식에 따라 달라질 수 있습니다.</p>
                       </div>
@@ -250,7 +250,7 @@ export default function FranchisePage() {
               <p className="brand-promise__text">
                 호호붕붕이 가장 빛나는 브랜드가 아닐 수 있습니다.
                 하지만 매일, 매 순간 고객에게 진심을 다했고,{' '}
-                <strong style={{ color:'var(--brand-pink)', fontSize:18 }}>그 결과 일 매출 180만원이라는 숫자를 만들었습니다.</strong>
+                <strong style={{ color:'var(--brand-pink)', fontSize:18 }}>그 결과 일 매출 167만원이라는 숫자를 만들었습니다.</strong>
                 {' '}호호붕붕과 50년, 100년을 함께 할 가맹 대표님을 기다립니다.
               </p>
             </div>
@@ -297,10 +297,11 @@ export default function FranchisePage() {
               <thead><tr><th>항목</th><th>내용</th><th style={{ textAlign:'right' }}>금액</th></tr></thead>
               <tbody>
                 {[
-                  { i:'장비 구입비', d:'붕어빵 틀, 가스 버너,\n매대 등',              a:'약 1,200만원' },
-                  { i:'초기 재료비', d:'밀가루, 팥, 크림 등\n1개월치',                a:'약 300만원'  },
-                  { i:'교육비',     d:'2주~1개월 실전 교육\n(원부자재 실비)',          a:'200만원'     },
-                  { i:'기타 준비금', d:'인허가, 예비 자금 등',                        a:'약 800만원'  },
+                  { i:'시설비용',      d:'붕어빵·땅콩빵·십원빵·미니·계란빵 기계,\n온장고, 냉장고 일체', a:'약 873만원'       },
+                  { i:'집기·비품·식품', d:'집기, 포장재료, 주방도구,\n초도 식품 재료',               a:'약 913만원'       },
+                  { i:'인테리어비',    d:'매대, 간판, 선반, 조명 등\n(견적에 따라 상이)',              a:'견적에 따라 상이'  },
+                  { i:'교육비',        d:'2주~1개월 실전 교육\n(원부자재 실비)',                     a:'200만원'         },
+                  { i:'기타 준비금',   d:'인허가, 예비 자금 등',                                    a:'별도'            },
                 ].map(c => (
                   <tr key={c.i}>
                     <td style={{ fontWeight:600 }}>{c.i}</td>
@@ -310,7 +311,7 @@ export default function FranchisePage() {
                 ))}
                 <tr className="total">
                   <td colSpan={2} style={{ fontWeight:700 }}>총 창업 비용</td>
-                  <td style={{ textAlign:'right', whiteSpace:'nowrap' }}>약 2,500만원</td>
+                  <td style={{ textAlign:'right', whiteSpace:'nowrap' }}>약 2,000만원 + 인테리어</td>
                 </tr>
               </tbody>
             </table>
