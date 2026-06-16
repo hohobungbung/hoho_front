@@ -246,12 +246,12 @@ export default function FranchisePage() {
               ))}
             </div>
             <div className="reasons__brand-promise">
-              <p style={{ fontFamily:'var(--font-korean)', fontSize:16, color:'#888', marginBottom:16 }}>창업의 꿈, 호호붕붕과 함께 하세요</p>
+              <p style={{ fontFamily:'var(--font-korean)', fontSize:30, color:'var(--brand-pink)', marginBottom:16, fontWeight:700 }}>창업의 꿈, 호호붕붕과 함께 하세요</p>
               <p className="brand-promise__text">
-                호호붕붕이 가장 빛나는 브랜드가 아닐 수 있습니다.
-                하지만 매일, 매 순간 고객에게 진심을 다했고,{' '}
+                호호붕붕이 가장 빛나는 브랜드가 아닐 수 있습니다.<br />
+                하지만 매일, 매 순간 고객에게 진심을 다했고,<br />
                 <strong style={{ color:'var(--brand-pink)', fontSize:18 }}>그 결과 일 매출 167만원이라는 숫자를 만들었습니다.</strong>
-                {' '}호호붕붕과 50년, 100년을 함께 할 가맹 대표님을 기다립니다.
+                {' '}<br />호호붕붕과 50년, 100년을 함께 할 가맹 대표님을 기다립니다.
               </p>
             </div>
           </div>
