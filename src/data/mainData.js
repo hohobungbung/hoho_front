@@ -8,20 +8,20 @@ export const HERO_SLIDES = [
 
 export const MARQUEE_ITEMS = [
   { num:'로열티 제로', label:'내가 번 돈은 온전히 내 것' }, null,
-  { num:'일 매출 180만+', label:'상일동 직영점 실제 수치' }, null,
+  { num:'일 매출 167만+', label:'상일동 직영점 3월 일평균' }, null,
   { num:'사계절 붕어빵', label:'노점을 넘어 젊은 감성 브랜드로' }, null,
-  { num:'월 순수익 400~500만', label:'투명하게 공개하는 실수익' }, null,
+  { num:'월 순수익 1,000만~1,700만', label:'상일동 직영점 3~5월 실수익' }, null,
   { num:'운영 자유도 100%', label:'영업시간·방식 모두 점주님이 결정' }, null,
-  { num:'3평부터 시작', label:'소자본으로 현실 가능한 창업' }, null,
+  { num:'4평부터 시작', label:'소자본으로 현실 가능한 창업' }, null,
   { num:'따뜻한 한 입', label:'호호붕붕이 만드는 작은 행복' }, null,
   { num:'6개월 회수', label:'빠른 투자금 회수 구조' }, null,
 ]
 
 export const FOUR_ZERO = [
-  { icon:'🚫', name:'로열티 없음', desc:'매출의 일정 비율을 본사에 납부하는 구조가 없습니다. 내가 번 돈은 온전히 내 것입니다.', fromLeft:true },
-  { icon:'💳', name:'가맹비 없음', desc:'계약 시 별도의 가맹비를 받지 않습니다. 교육비 200만원은 원부자재 실비로만 사용됩니다.', fromLeft:false },
-  { icon:'🙅', name:'운영 간섭 없음', desc:'영업시간, 운영 방식 모두 점주님이 결정합니다. 본사는 필요할 때만 지원합니다.', fromLeft:true },
-  { icon:'📦', name:'필수물류 강제 없음', desc:'특정 업체를 통한 의무 구매가 없습니다. 좋은 재료를 합리적인 가격에 자유롭게 구매하세요.', fromLeft:false },
+  { img:'/images/royalty.png',       name:'로열티 없음',      desc:'매출의 일정 비율을 본사에 납부하는 구조가 없습니다. 내가 번 돈은 온전히 내 것입니다.', fromLeft:true },
+  { img:'/images/FranchiseFee.png',  name:'가맹비 없음',      desc:'계약 시 별도의 가맹비를 받지 않습니다. 교육비 200만원은 원부자재 실비로만 사용됩니다.', fromLeft:false },
+  { img:'/images/Interference.png',  name:'운영 간섭 없음',   desc:'영업시간, 운영 방식 모두 점주님이 결정합니다. 본사는 필요할 때만 지원합니다.', fromLeft:true },
+  { img:'/images/Supplies.png',      name:'필수물류 강제 없음', desc:'특정 업체를 통한 의무 구매가 없습니다. 좋은 재료를 합리적인 가격에 자유롭게 구매하세요.', fromLeft:false },
 ]
 
 export const STARTUP_TYPES = [
