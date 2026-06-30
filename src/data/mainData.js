@@ -18,10 +18,10 @@ export const MARQUEE_ITEMS = [
 ]
 
 export const FOUR_ZERO = [
-  { img:'/images/royalty.png',       name:'로열티 없음',      desc:'매출의 일정 비율을 본사에 납부하는 구조가 없습니다. 내가 번 돈은 온전히 내 것입니다.', fromLeft:true },
-  { img:'/images/FranchiseFee.png',  name:'가맹비 없음',      desc:'계약 시 별도의 가맹비를 받지 않습니다. 교육비 200만원은 원부자재 실비로만 사용됩니다.', fromLeft:false },
-  { img:'/images/Interference.png',  name:'운영 간섭 없음',   desc:'영업시간, 운영 방식 모두 점주님이 결정합니다. 본사는 필요할 때만 지원합니다.', fromLeft:true },
-  { img:'/images/Supplies.png',      name:'필수물류 강제 없음', desc:'특정 업체를 통한 의무 구매가 없습니다. 좋은 재료를 합리적인 가격에 자유롭게 구매하세요.', fromLeft:false },
+  { img:'/images/royalty.webp',       name:'로열티 없음',      desc:'매출의 일정 비율을 본사에 납부하는 구조가 없습니다. 내가 번 돈은 온전히 내 것입니다.', fromLeft:true },
+  { img:'/images/FranchiseFee.webp',  name:'가맹비 없음',      desc:'계약 시 별도의 가맹비를 받지 않습니다. 교육비 200만원은 원부자재 실비로만 사용됩니다.', fromLeft:false },
+  { img:'/images/Interference.webp',  name:'운영 간섭 없음',   desc:'영업시간, 운영 방식 모두 점주님이 결정합니다. 본사는 필요할 때만 지원합니다.', fromLeft:true },
+  { img:'/images/Supplies.webp',      name:'필수물류 강제 없음', desc:'특정 업체를 통한 의무 구매가 없습니다. 좋은 재료를 합리적인 가격에 자유롭게 구매하세요.', fromLeft:false },
 ]
 
 export const STARTUP_TYPES = [
