@@ -48,32 +48,31 @@ export const IMAGES = {
 
   // ── 히어로 슬라이더 배경 (3장) ───────────────────
   hero: [
-    '/images/in_store.png',  // 현재 1번 슬라이드에 적용 중
-    '/images/10won.png',  // '/images/hero-2.jpg' — 매장 전경 외부
-    '/images/beverage.png',  // '/images/hero-3.jpg' — 점주가 굽는 모습
+    '/images/in_store.webp',
+    '/images/10won.webp',
+    '/images/beverage.webp',
   ],
 
   // ── 섹션 배경 ────────────────────────────────────
-  revenueBg: '/images/in_store.png',  // '/images/revenue-bg.jpg' — The Real Numbers 섹션 배경
+  revenueBg: '/images/in_store.webp',
   revenuePanelOpacity: 0.7,          // 패널 불투명도 (0 = 완전 투명 ~ 1 = 완전 불투명)
 
   // ── Who We Welcome 창업유형 이미지 (4장) ─────────
   // null → 이모지 표시 / 경로 입력 → 이미지로 교체
-  startupType1: '/images/oneman.png',      // 청년 & 1인창업
-  startupType2: '/images/couple.png',      // 부부창업
-  startupType3: '/images/shopandshop.png', // 샵앤샵
-  startupType4: '/images/festival.png',    // 기타창업
+  startupType1: '/images/oneman.webp',
+  startupType2: '/images/couple.webp',
+  startupType3: '/images/shopandshop.webp',
+  startupType4: '/images/festival.webp',
 
   // ── 창업안내 페이지 Franchise Types 이미지 (4장) ──
-  // null → 이모지 표시 / 경로 입력 → 이미지로 교체
-  franchiseType1: '/images/oneman.png',  // '/images/ft-young.jpg'  — 청년 & 1인창업
-  franchiseType2: '/images/couple.png',  // '/images/ft-couple.jpg' — 부부창업
-  franchiseType3: '/images/shopandshop.png',  // '/images/ft-shop.jpg'   — 샵앤샵
-  franchiseType4: '/images/festival.png',  // '/images/ft-other.jpg'  — 기타창업
+  franchiseType1: '/images/oneman.webp',
+  franchiseType2: '/images/couple.webp',
+  franchiseType3: '/images/shopandshop.webp',
+  franchiseType4: '/images/festival.webp',
 
   // ── 브랜드 컨셉 이미지 ───────────────────────────
-  brandConcept: '/images/in_store.png',  // '/images/brand-concept.jpg' — 상일동 매장 실내
-  inStore:      '/images/in_store.png',  // 현재 파일 존재
+  brandConcept: '/images/in_store.webp',
+  inStore:      '/images/in_store.webp',
 
   // ── 상담 폼 일러스트 ─────────────────────────────
   craft:    '/images/craft.svg',
@@ -82,15 +81,15 @@ export const IMAGES = {
   // ── 제조공장 슬라이더 (9장) ──────────────────────
   // null → 이모지 플레이스홀더 표시 / 경로 입력 → 이미지 표시
   factory: [
-    '/images/genis_1.jpg',  // 1번
-    '/images/genis_2.jpg',  // 2번
-    '/images/genis_3.jpg',  // 3번
-    '/images/genis_4.jpg',  // 4번
-    '/images/genis_5.jpg',  // 5번 — '/images/genis_5.jpg'
-    '/images/genis_6.jpg',  // 6번 — '/images/genis_6.jpg'
-    '/images/genis_7.jpg',  // 7번 — '/images/genis_7.jpg'
-    '/images/genis_8.jpg',  // 8번 — '/images/genis_8.jpg'
-    '/images/genis_9.jpg',  // 9번 — '/images/genis_9.jpg'
+    '/images/genis_1.webp',
+    '/images/genis_2.webp',
+    '/images/genis_3.webp',
+    '/images/genis_4.webp',
+    '/images/genis_5.webp',
+    '/images/genis_6.webp',
+    '/images/genis_7.webp',
+    '/images/genis_8.webp',
+    '/images/genis_9.webp',
   ],
 
   // ── 메뉴 사진 ─────────────────────────────────────
